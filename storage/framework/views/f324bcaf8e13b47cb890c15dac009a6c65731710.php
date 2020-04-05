@@ -98,4 +98,3 @@
         </div>
     </body>
 </html>
-<?php /**PATH /var/www/html/pharmacySystem/resources/views/welcome.blade.php ENDPATH**/ ?>
