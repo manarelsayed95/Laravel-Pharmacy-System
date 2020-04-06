@@ -18,6 +18,7 @@
                 <td>{{$order->status}}</td>
                 <td>{{$order->action}}</td>
                 <td>{{$order->is_insured}}</td>
+                <td>{{$order->user->name}}</td>
             </tr>
             @endforeach
             <button type="button" class="btn btn-success">Create</button>
