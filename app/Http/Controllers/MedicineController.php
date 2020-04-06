@@ -8,6 +8,8 @@ use App\Medicine;
 
 class MedicineController extends Controller
 {
+
+
     public function index()
     {
 
@@ -17,6 +19,8 @@ class MedicineController extends Controller
         ]);
         
     }
+
+
 
     public function show()
     {
@@ -32,11 +36,14 @@ class MedicineController extends Controller
         ]);
     }
 
+
+
     public function create()
     {   
         return view('medicines.create');
     }
   
+
     public function store()
     {
         $request=request();
@@ -54,6 +61,40 @@ class MedicineController extends Controller
         ]);
         return redirect('/medicines');
     }
+
+
+    public function edit()
+    {   
+        $request=request();
+            $medicineId= $request->medicine;
+            $medicine=Medicine::find($medicineId);
+            return view('medicines.edit',[
+                'medicine'=>$medicine,  
+            ]);
+    }
+
+    
+    public function update()
+{   
+    $request=request();
+    $request->validate([
+        'name' => 'required|max:255',
+        'price' => 'required',
+        'type' => 'required',
+        'quantity' => 'required',
+    ]);
+   
+    $medicineId= $request->medicine;
+    $medicine=Medicine::find($medicineId);
+    
+       $medicine->name = $request->get('name');
+        $medicine->quantity = $request->get('quantity');
+        $medicine->type= $request->get('type');
+        $medicine->price= $request->get('price');
+        $medicine->save();
+    return redirect('/medicines');
+}
+
 
     public function destroy()
     {
