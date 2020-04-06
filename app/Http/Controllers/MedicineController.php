@@ -31,7 +31,30 @@ class MedicineController extends Controller
             
         ]);
     }
+
+    public function create()
+    {   
+        return view('medicines.create');
+    }
   
+    public function store()
+    {
+        $request=request();
+        $request->validate([
+            'name' => 'required|unique:medicines|max:255',
+            'price' => 'required',
+            'type' => 'required',
+            'quantity' => 'required',
+        ]);
+        Medicine::create([
+            'name'=> $request->name,
+            'quantity'=> $request->quantity,
+            'type'=> $request->type,
+            'price'=> $request->price,
+        ]);
+        return redirect('/medicines');
+    }
+
     public function destroy()
     {
         $request=request();

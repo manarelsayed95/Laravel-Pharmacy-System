@@ -25,8 +25,12 @@ Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
 
 Route::get('/doctors/{doctor}', 'DoctorController@show')->name('doctors.show');
 
-Route::get('/medicines', 'MedicineController@index')->name('medicines.index');
 
+
+
+Route::get('/medicines', 'MedicineController@index')->name('medicines.index');
+Route::get('/medicines/create','MedicineController@create')->name('medicines.create');
+Route::post('/medicines','MedicineController@store')->name('medicines.store');
 Route::get('/medicines/{medicine}', 'MedicineController@show')->name('medicines.show');
 Route::delete('/medicines/{medicine}/delete','MedicineController@destroy')->name('medicines.destroy');
 
