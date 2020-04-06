@@ -30,8 +30,7 @@
               <td>{{$doctor->email}}</td>
               <td>{{ $doctor->image}}</td>
               <td>{{ $doctor->national_id}}</td>
-              {{-- <td>{{ $doctor->created_at->format('d-m-y')}}</td>   --}}
-              <td>date</td>  
+              <td>{{ $doctor->created_at->format('d-m-y')}}</td>  
               <td>{{ $doctor->ban_flag}}</td> 
               
             
