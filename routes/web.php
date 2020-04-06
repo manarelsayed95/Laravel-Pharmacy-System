@@ -23,3 +23,4 @@ Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
 
 Route::get('/doctors/{doctor}', 'DoctorController@show')->name('doctors.show');
 
+Route::get('/doctors/create', 'DoctorController@create')->name('posdoctorsts.create');
