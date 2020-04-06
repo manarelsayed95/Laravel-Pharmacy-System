@@ -30,7 +30,7 @@
             
               <td><a href="{{route('medicines.show',['medicine' => $medicine->id])}}" class="btn btn-primary btn-sm">  <i class="fas fa-folder">
             </i> View</a></td>
-              <td><a href="#" class="btn btn-info btn-sm"> <i class="fas fa-pencil-alt">
+              <td><a href="{{route('medicines.edit',['medicine' => $medicine->id])}}" class="btn btn-info btn-sm"> <i class="fas fa-pencil-alt">
             </i> Edit</a></td> 
               <td>    
               <form method="POST" action="{{route('medicines.destroy',['medicine' => $medicine->id])}}">

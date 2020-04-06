@@ -32,5 +32,7 @@ Route::get('/medicines', 'MedicineController@index')->name('medicines.index');
 Route::get('/medicines/create','MedicineController@create')->name('medicines.create');
 Route::post('/medicines','MedicineController@store')->name('medicines.store');
 Route::get('/medicines/{medicine}', 'MedicineController@show')->name('medicines.show');
+Route::get('/medicines/{medicine}/edit','MedicineController@edit')->name('medicines.edit');
+Route::put('/medicines/{medicine}','MedicineController@update')->name('medicines.update');
 Route::delete('/medicines/{medicine}/delete','MedicineController@destroy')->name('medicines.destroy');
 
