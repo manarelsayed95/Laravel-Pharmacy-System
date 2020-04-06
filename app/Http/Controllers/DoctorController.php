@@ -116,26 +116,17 @@ class DoctorController extends Controller
     }
 
 
-    public function destroy(Request $request){
-        if ($request->ajax())
-        {
-            DB::table('doctors') -> where ('id',$request->id)
-            ->delete();
-        }
-       $doctor = Doctor::findOrFail($id);
-       $doctor->delete();
-      
-    //    return redirect()->back();
-        // return response()->json([
-    
-        //     'message' => 'Doctor deleted successfully!'
-    
-        // ]);
-    
+    public function destroy()
+
+    {
+        $request = request();
+        $doctorId = $request->doctor;
+
+       
+        Doctor::find($doctorId)->delete();
+        return redirect()->route('doctors.index');
     }
+
 
    
 }
-
-
-
