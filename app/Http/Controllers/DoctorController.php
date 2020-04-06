@@ -42,12 +42,10 @@ class DoctorController extends Controller
 
     public function create()
     {
-        // $doctors = Doctor::all();
-        $pharmacies = Pharmacy::all();
+        $pharmacies = pharmacy::all();
 
         return view('doctors.create', [
             'pharmacies' => $pharmacies,
-            // 'doctors' => $doctors
         ]);
     }
 
@@ -91,7 +89,7 @@ class DoctorController extends Controller
         $request = request();
         $doctorId = $request->doctor;
         $doctor = Doctor::find($doctorId);
-        $pharmacies = Pharmacy::all();
+        $pharmacies = pharmacy::all();
 
         return view('doctors.edit',[
             'doctor'=>$doctor,
@@ -109,7 +107,7 @@ class DoctorController extends Controller
         $doctor->national_id= $request->national_id;
         $doctor->password = $request->password;
         // $doctor->image = $request->image;
-        $pharmacies = Pharmacy::all();
+        $pharmacies = pharmacy::all();
        
         $doctor->save();
         return redirect()->route('doctors.index');
