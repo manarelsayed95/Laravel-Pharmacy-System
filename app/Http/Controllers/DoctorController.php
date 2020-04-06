@@ -5,6 +5,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Doctor;
+use App\Pharmacy;
+use App\Http\Requests\StoreDoctorRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class DoctorController extends Controller
 {
@@ -38,37 +42,93 @@ class DoctorController extends Controller
 
     public function create()
     {
+        // $doctors = Doctor::all();
         $pharmacies = Pharmacy::all();
 
         return view('doctors.create', [
-            'pharmacies' => $pharmacies
+            'pharmacies' => $pharmacies,
+            // 'doctors' => $doctors
         ]);
     }
 
-    public function store(StorePostRequest $request)
+    public function store(StoreDoctorRequest $request)
     {
-        //get the request data
-        // $request = request(); replaced with storePostRequest
+        // $validatedData = $request->validated();
+        // $doctor = new Doctor();
+        if($request->hasfile('image'))
+        {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $filename =time().'.'.$extension;
+            // $file->move('/uploads/doctors/',$filename);
+            Storage::disk('public')->put('avatars/'.$filename, File::get($file));
+        } 
+        else {
+            $filename = 'doctor.jpg';
+        }
 
+        // $validatedData['image'] = 'avatars/'.$filename;
 
-        // $validatedData = $request->validate([
-        //     'title'=>'required|min:3|unique:posts',
-        //     'description' =>'required|min:10'
-        // ],[
-        //     // to overide validation message
-        //     'title.min' => 'The title has to be more than 3 characters'
-        // ]);
-        //store the request data in the db
-        $request->only('title', 'description', 'user_id');
-        Post::create([
-            'title' => $request->title,
-            'description' =>  $request->description,
-            'user_id' =>  $request->user_id,
+        Doctor::create(
+            [
+            'name' => $request->name,
+            'email' =>  $request->email,
+            'password' =>  $request->password,
+            'national_id'=> $request->national_id,
+            'pharmacy_id'=> $request->pharmacy_id,
+            'image'=>$filename
         ]);
 
         //redirect to /posts
-        return redirect()->route('posts.index');
+        return redirect()->route('doctors.index');
     }
+
+
+
+
+    public function edit()
+    {
+        $request = request();
+        $doctorId = $request->doctor;
+        $doctor = Doctor::find($doctorId);
+        $pharmacies = Pharmacy::all();
+
+        return view('doctors.edit',[
+            'doctor'=>$doctor,
+            'pharmacies'=>$pharmacies,
+        ]);
+
+    }
+   
+
+    public function update(StoreDoctorRequest $request, $id)
+    {
+        $doctor = Doctor::find($id);
+        $doctor->name= $request->name;
+        $doctor->email = $request->email;
+        $doctor->national_id= $request->national_id;
+        $doctor->password = $request->password;
+        // $doctor->image = $request->image;
+        $pharmacies = Pharmacy::all();
+       
+        $doctor->save();
+        return redirect()->route('doctors.index');
+    }
+
+
+    // public function destroy($id){
+
+    //     Doctor::find($id)->delete($id);
+    
+      
+    
+    //     return response()->json([
+    
+    //         'success' => 'Record deleted successfully!'
+    
+    //     ]);
+    
+    // }
 
    
 }
