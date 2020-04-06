@@ -19,4 +19,9 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin');
 });
+
 Route::get('orders','orderController@index');
+Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
+
+Route::get('/doctors/{doctor}', 'DoctorController@show')->name('doctors.show');
+
