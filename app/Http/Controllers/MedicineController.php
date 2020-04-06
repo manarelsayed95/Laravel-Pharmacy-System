@@ -32,6 +32,12 @@ class MedicineController extends Controller
         ]);
     }
   
-    
+    public function destroy()
+    {
+        $request=request();
+        $medicineId= $request->medicine;
+        Medicine::find($medicineId)->delete();
+        return redirect('/medicines');
+    }
    
 }

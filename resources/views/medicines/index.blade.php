@@ -32,8 +32,13 @@
             </i> View</a></td>
               <td><a href="#" class="btn btn-info btn-sm"> <i class="fas fa-pencil-alt">
             </i> Edit</a></td> 
-              <td><a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash">
-            </i> Delete</a></td> 
+              <td>    
+              <form method="POST" action="{{route('medicines.destroy',['medicine' => $medicine->id])}}">
+                @method('DELETE')
+                @csrf
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Do you really want to delete this medicine?')" role="button" aria-pressed="true">Delete</a>
+                </form>
+             </td> 
       
           @endforeach
           </tbody>
