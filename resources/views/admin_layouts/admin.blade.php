@@ -217,7 +217,7 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div>
+  <div class="content-wrapper">
   @yield('content')
   </div>
     </section>
