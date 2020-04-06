@@ -220,7 +220,7 @@
   <div>
   @yield('content')
   </div>
-    </section>
+    <!-- </section> -->
     <!-- /.content -->
   
   <!-- /.content-wrapper -->
