@@ -21,4 +21,3 @@ Route::get('/admin', function () {
 });
 Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
 
-
