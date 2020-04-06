@@ -25,3 +25,6 @@ Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
 
 Route::get('/doctors/{doctor}', 'DoctorController@show')->name('doctors.show');
 
+Route::get('/medicines', 'MedicineController@index')->name('medicines.index');
+
+Route::get('/medicines/{medicine}', 'MedicineController@show')->name('medicines.show');
