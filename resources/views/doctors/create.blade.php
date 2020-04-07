@@ -64,7 +64,7 @@
               </div>
               <div class="form-group">
                 <label for="inputClientCompany">Password</label>
-                <input type="text" name="password" id="inputClientCompany" class="form-control">
+                <input type="password" name="password" id="inputClientCompany" class="form-control">
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">National ID</label>

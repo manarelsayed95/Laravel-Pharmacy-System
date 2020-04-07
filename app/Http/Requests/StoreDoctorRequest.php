@@ -32,7 +32,7 @@ class StoreDoctorRequest extends FormRequest
         ],
                 'password' => 'required|min:6',
                 'national_id' => ['required',
-                Rule::unique('doctors', 'email')->ignore($this->doctor),
+                Rule::unique('doctors', 'national_id')->ignore($this->doctor),
         ],
 
                 // 'image' => 'image|mimes:jpg,jpeg'

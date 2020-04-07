@@ -33,7 +33,7 @@
               <td>{{ $doctor->created_at->format('d-m-y')}}</td>  
               <td>{{ $doctor->ban_flag}}</td> 
               
-            
+         
               <td><a href="{{route('doctors.show',['doctor' => $doctor->id])}}" class="btn btn-primary btn-sm">  <i class="fas fa-folder">
             </i> View</a></td>
               <td><a href="{{route('doctors.edit',['doctor' => $doctor->id])}}" class="btn btn-info btn-sm"> <i class="fas fa-pencil-alt">
@@ -42,7 +42,8 @@
                 <form method="POST" action="{{route('doctors.destroy',['doctor' => $doctor->id])}}" >
                     @method('DELETE')
                     @csrf
-                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this doctor?')">Delete</button>
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this doctor?')"><i class="fas fa-trash-alt">
+                    </i> Delete</button>
                 </form>
             </td>
             </tr>

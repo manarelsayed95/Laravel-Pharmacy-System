@@ -65,7 +65,7 @@
               </div>
               <div class="form-group">
                 <label for="inputClientCompany">Password</label>
-                <input type="text" name="password" id="inputClientCompany" class="form-control" value="{{$doctor->name}}">
+                <input type="password" name="password" id="inputClientCompany" class="form-control" value="{{$doctor->name}}">
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">National ID</label>
@@ -104,8 +104,8 @@
 
         <div class="row ">
         <div class="col-12">
-          <a href="#" class="btn btn-secondary">Cancel</a>
-          <input type="submit" value="Add Doctor" class="btn btn-success float-right">
+          <a href="{{route('doctors.index')}}" class="btn btn-secondary">Cancel</a>
+          <input type="submit" value="Edit Doctor" class="btn btn-success float-right">
         </form>
         </div>
       </div>

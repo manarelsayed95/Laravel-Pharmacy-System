@@ -1,188 +1,188 @@
 @extends('admin_layouts.admin')
 @section('content')
-
 <section class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>Doctor Data</h1>
-        </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Doctor Data</li>
-          </ol>
-        </div>
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Profile</h1>
       </div>
-    </div><!-- /.container-fluid -->
-  </section>
-
-  <!-- Main content -->
-  <section class="content">
-
-    <!-- Default box -->
-    <div class="card">
-      <div class="card-header">
-        {{-- <h3 class="card-title">Doctor {{ $doctor->id }} Information</h3> --}}
-
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fas fa-minus"></i></button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fas fa-times"></i></button>
-        </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Doctor Profile</li>
+        </ol>
       </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
-            <div class="row">
-              <div class="col-12 col-sm-4">
-                <div class="info-box bg-light">
-                  <div class="info-box-content">
-                    <span class="info-box-text text-center text-muted">Estimated budget</span>
-                    <span class="info-box-number text-center text-muted mb-0">2300</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="info-box bg-light">
-                  <div class="info-box-content">
-                    <span class="info-box-text text-center text-muted">Total amount spent</span>
-                    <span class="info-box-number text-center text-muted mb-0">2000</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-4">
-                <div class="info-box bg-light">
-                  <div class="info-box-content">
-                    <span class="info-box-text text-center text-muted">Estimated project duration</span>
-                    <span class="info-box-number text-center text-muted mb-0">20 <span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12">
-                <h4>Recent Activity</h4>
-                  <div class="post">
-                    <div class="user-block">
-                      <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                      <span class="username">
-                        <a href="#">Jonathan Burke Jr.</a>
-                      </span>
-                      <span class="description">Shared publicly - 7:45 PM today</span>
-                    </div>
-                    <!-- /.user-block -->
-                    <p>
-                      Lorem ipsum represents a long-held tradition for designers,
-                      typographers and the like. Some people hate it and argue for
-                      its demise, but others ignore.
-                    </p>
-
-                    <p>
-                      <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v2</a>
-                    </p>
-                  </div>
-
-                  <div class="post clearfix">
-                    <div class="user-block">
-                      <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
-                      <span class="username">
-                        <a href="#">Sarah Ross</a>
-                      </span>
-                      <span class="description">Sent you a message - 3 days ago</span>
-                    </div>
-                    <!-- /.user-block -->
-                    <p>
-                      Lorem ipsum represents a long-held tradition for designers,
-                      typographers and the like. Some people hate it and argue for
-                      its demise, but others ignore.
-                    </p>
-                    <p>
-                      <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 2</a>
-                    </p>
-                  </div>
-
-                  <div class="post">
-                    <div class="user-block">
-                      <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                      <span class="username">
-                        <a href="#">Jonathan Burke Jr.</a>
-                      </span>
-                      <span class="description">Shared publicly - 5 days ago</span>
-                    </div>
-                    <!-- /.user-block -->
-                    <p>
-                      Lorem ipsum represents a long-held tradition for designers,
-                      typographers and the like. Some people hate it and argue for
-                      its demise, but others ignore.
-                    </p>
-
-                    <p>
-                      <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v1</a>
-                    </p>
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-            <h3 class="text-primary"><i class="fas fa-paint-brush"></i> AdminLTE v3</h3>
-            <p class="text-muted">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
-            <br>
-            <div class="text-muted">
-              <p class="text-sm">Client Company
-                <b class="d-block">Deveint Inc</b>
-              </p>
-              <p class="text-sm">Project Leader
-                <b class="d-block">Tony Chicken</b>
-              </p>
-            </div>
-
-            <h5 class="mt-5 text-muted">Project files</h5>
-            <ul class="list-unstyled">
-              <li>
-                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Functional-requirements.docx</a>
-              </li>
-              <li>
-                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
-              </li>
-              <li>
-                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i> Email-from-flatbal.mln</a>
-              </li>
-              <li>
-                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i> Logo.png</a>
-              </li>
-              <li>
-                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Contract-10_12_2014.docx</a>
-              </li>
-            </ul>
-            <div class="text-center mt-5 mb-3">
-              <a href="#" class="btn btn-sm btn-primary">Add files</a>
-              <a href="#" class="btn btn-sm btn-warning">Report contact</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /.card-body -->
     </div>
-    <!-- /.card -->
+  </div><!-- /.container-fluid -->
+</section>
 
-  </section>
-  <!-- /.content -->
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+
+        <!-- Profile Image -->
+        <div class="card card-primary card-outline">
+          <div class="card-body box-profile">
+            <div class="text-center">
+              <img class="profile-user-img img-fluid img-circle"
+                   src="../../dist/img/user4-128x128.jpg"
+                   alt="User profile picture">
+            </div>
+
+          <h3 class="profile-username text-center">{{$doctor->name}}</h3>
+
+            <p class="text-muted text-center">Doctor</p>
+
+            
+
+            <a href="#" class="btn btn-primary btn-block"><b>Recommend</b></a>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+        <!-- About Me Box -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">About Doctor</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <strong><i class="fas fa-book mr-1"></i> Name</strong>
+
+            <p class="text-muted">
+             {{$doctor->name}}
+            </p>
+
+            <hr>
+
+            <strong><i class="fas fa-map-marker-alt mr-1"></i> Hired On</strong>
+
+            <p class="text-muted">{{$doctor->created_at}}</p>
+
+            <hr>
+
+            <strong><i class="fas fa-pencil-alt mr-1"></i> Email</strong>
+
+            <p class="text-muted">
+              <span class="tag tag-danger">{{$doctor->email}}</span>
+           
+            </p>
+
+            <hr>
+
+            <strong><i class="fas fa-map-marker-alt mr-1"></i> National ID</strong>
+
+            <p class="text-muted">{{$doctor->national_id}}</p>
+
+            <hr>
+
+            <strong><i class="fas fa-map-marker-alt mr-1"></i>Pharmacy</strong>
+
+            <p class="text-muted">Pharmacy name</p>
+            <hr>
+
+            <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+
+            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header p-2">
+            <ul class="nav nav-pills">
+              <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{route('doctors.edit',['doctor' => $doctor->id])}}" >Edit</a></li>
+            </ul>
+          </div><!-- /.card-header -->
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="active tab-pane" id="activity">
+                <!-- Post -->
+                <div class="post">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+                    <span class="username">
+                    <a href="#">{{$doctor->name}}</a>
+                      <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                    </span>
+                  <span class="description">Hired on {{$doctor->created_at}}</span>
+                  </div>
+                  <!-- /.user-block -->
+                  <p>
+                    Lorem ipsum represents a long-held tradition for designers,
+                    typographers and the like. Some people hate it and argue for
+                    its demise, but others ignore the hate as they create awesome
+                    tools to help create filler text for everyone from bacon lovers
+                    to Charlie Sheen fans.
+                  </p>
+
+                
+    
+                </div>
+
+                  <form class="form-horizontal">
+                    <div class="input-group input-group-sm mb-0">
+                      <input class="form-control form-control-sm" placeholder="Add comments">
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-danger">Add</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              
+                  <br>
+                  <br>
+                  <div class="row mb-3">
+                    <div class="col-sm-6">
+                      <img class="img-fluid" src="../../dist/img/photo1.png" alt="Photo">
+                    </div>
+                   
+                      </div>
+                      <!-- /.row -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+
+               
+
+              
+                </div>
+                <!-- /.post -->
+              </div>
+              <!-- /.tab-pane -->
+                
+            <!-- /.tab-content -->
+          </div><!-- /.card-body -->
+        </div>
+        <!-- /.nav-tabs-custom -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
 <footer class="main-footer">
-  <div class="float-right d-none d-sm-block">
-    <b>Version</b> 3.0.4
-  </div>
-  <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-  reserved.
+<div class="float-right d-none d-sm-block">
+  <b>Version</b> 3.0.4
+</div>
+<strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+reserved.
 </footer>
 
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
-  <!-- Control sidebar content goes here -->
+<!-- Control sidebar content goes here -->
 </aside>
 
 @endsection
