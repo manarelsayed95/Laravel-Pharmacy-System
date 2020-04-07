@@ -25,20 +25,12 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Doctor Add</li>
+              <li class="breadcrumb-item active">Doctor Edit</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
-    <!-- Main content -->
-    {{-- <div class=“container”>
-        <div class=“row”> --}}
-    {{-- <div class="row h-20 justify-content-center align-items-center"> --}}
-        {{-- <div class="col-10 col-md-8 col-lg-6"> --}}
-  {{-- <form method="POST" action="{{route('posts.store')}}">
-      @csrf --}}
     <section class="content h-100 ">
       <div class="row">
         <div class="col-md-6 ">
@@ -52,7 +44,7 @@
               </div>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{route('doctors.update',['doctor' => $doctor->id])}}">
+                <form method="POST" action="{{route('doctors.update',['doctor' => $doctor->id])}}" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
               <div class="form-group">
@@ -71,18 +63,14 @@
                 <label for="inputProjectLeader">National ID</label>
                 <input type="text" id="inputProjectLeader"  name= "national_id"class="form-control" value="{{$doctor->national_id}}">
               </div>
+              
               <div class="form-group">
-                <label for="exampleInputFile">Avatar</label>
-                <div class="input-group">
-                  <div class="custom-file">
-                    <input type="file" name= "image" class="custom-file-input" id="image" accept="image/*">
-                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                  </div>
-                  {{-- <div class="input-group-append">
-                    <span class="input-group-text" id="">Upload</span>
-                  </div> --}}
+                <div class="form-group col-md-12">
+                  <label for="avatar">Avatar</label>
+                  <input type="file" class="d-block" id="avatar" name="avatar" accept="image/*">
                 </div>
               </div>
+             
 
               <div class="form-group">
                 <label for="inputStatus">Pharmacies</label>

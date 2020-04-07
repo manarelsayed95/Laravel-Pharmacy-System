@@ -98,11 +98,24 @@ class DoctorController extends Controller
 
     public function update(StoreDoctorRequest $request, $id)
     {
+
         $doctor = Doctor::find($id);
+
+        if($request->hasFile('avatar'))
+        {
+            $file = $request->file('avatar');
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $filename =time().'.'.$extension;
+            Storage::disk('public')->put('doctors/'.$filename, File::get($file));
+        } else {
+            $filename = 'doctor.jpg';
+        }
+
         $doctor->name= $request->name;
         $doctor->email = $request->email;
         $doctor->national_id= $request->national_id;
         $doctor->password = $request->password;
+        $doctor->image = $filename;
         $pharmacies = pharmacy::all();
        
         $doctor->save();
