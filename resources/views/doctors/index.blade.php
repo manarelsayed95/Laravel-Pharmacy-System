@@ -5,8 +5,8 @@
     <div class="container " style="text-align:center">
         <br>
       
-  <a href="#"  class="btn btn-success mb-5" style="align-center" >Add New Doctor</a></div>
-      <table class="table table-bordered table-hover table-dark" class="mx-auto" style="background-color: 	rgb(52, 57, 64)">
+  <a href="{{route('doctors.create')}}"  class="btn btn-success mb-5" style="align-center" >Add New Doctor</a></div>
+      <table class="table table-bordered table-hover table-dark" class="mx-auto" style="background-color: 	rgb(52, 57, 64)" id="doctor_table">
         <thead class="thead-light">
             <tr>
               <th scope="col">ID</th>
@@ -19,49 +19,47 @@
               <th scope="col"></th>
               <th scope="col">Actions</th>
               <th scope="col"></th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
             @foreach($doctors as $doctor)
             <tr>
-
-                {{-- <th scope="row">1</th>
-                <td> mayar</td>
-                <td> mayar@gmail.com</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td> --}}
                 
-
             <th scope="row">{{ $doctor->id }}</th>
               <td>{{ $doctor->name }} </td>
               <td>{{$doctor->email}}</td>
-              <td>{{ $doctor->image}}</td>
-              <td>{{ $doctor->national_id}}</td> 
-              {{-- <td>{{ $post->user ? $post->user->name : 'not exist'}}</td> --}}
-              {{-- <td>{{ $doctor->created_at->format('d-m-y')}}</td>   --}}
-              <td>date</td>  
-              <td>{{ $doctor->ban_flag}}</td> 
-              
-            
-              <td><a href="{{route('doctors.show',['doctor' => $doctor->id])}}" class="btn btn-primary btn-sm">  <i class="fas fa-folder">
-            </i> View</a></td>
-              <td><a href="#" class="btn btn-info btn-sm"> <i class="fas fa-pencil-alt">
-            </i> Edit</a></td> 
-              <td><a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash">
-            </i> Delete</a></td> 
+              <td><img src="{{asset('uploads/doctors/'.$doctor->image)}}" width="90px" height="90px"></td>
+              <td>{{ $doctor->national_id}}</td>
+              <td>{{ $doctor->created_at->format('d-m-y')}}</td> 
 
-{{-- 
-             <td><a href="{{route('posts.show',['post' => $post->id])}}" class="btn btn-primary btn-sm">View</a></td>
-            <td><a href="{{route('posts.edit',['post' => $post->id])}}" class="btn btn-warning btn-sm">Edit</a></td> --}}
-            {{-- <td> 
-                <form method="POST" action="{{route('posts.destroy',['post' => $post->id])}}" >
+              <td>{{ $doctor->ban_flag ? 'Banned': 'Not Banned'}}</td>
+              
+         
+              <td><a href="{{route('doctors.show',['doctor' => $doctor->id])}}" class="btn btn-primary btn-sm" >  <i class="fas fa-folder">
+            </i> View</a></td>
+              <td><a href="{{route('doctors.edit',['doctor' => $doctor->id])}}" class="btn btn-info btn-sm" > <i class="fas fa-pencil-alt">
+            </i> Edit</a></td>
+            <td> 
+                <form method="POST" action="{{route('doctors.destroy',['doctor' => $doctor->id])}}" >
                     @method('DELETE')
                     @csrf
-                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this doctor?')"><i class="fas fa-trash-alt">
+                    </i> Delete</button>
                 </form>
-            </td> --}}
+            </td>
+
+            @if($doctor->ban_flag)         
+            {{-- if ban status true -> unban action --}}
+              <td><a href="#" class="btn btn-success btn-sm" >  <i class="fas fa-user-slash">
+              </i> UnBan</a></td>           
+            @else
+            {{-- if ban status false -> ban action --}}
+              <td><a href="#" class="btn btn-warning btn-sm" >  <i class="fas fa-user-slash">
+              </i> Ban</a></td>    
+            @endif
+
+            
             </tr>
           @endforeach
           </tbody>
