@@ -66,9 +66,9 @@ Route::put('/medicines/{medicine}','MedicineController@update')->name('medicines
 Route::delete('/medicines/{medicine}/delete','MedicineController@destroy')->name('medicines.destroy');
 
 Route::get('/areas', 'AreaController@index')->name('areas.index');
-Route::get('/areas/{area}', 'AreaController@show')->name('areas.show');
 Route::get('/areas/create','AreaController@create')->name('areas.create');
 Route::post('/areas','AreaController@store')->name('areas.store');
+Route::get('/areas/{area}', 'AreaController@show')->name('areas.show');
 Route::get('/areas/{area}/edit','AreaController@edit')->name('areas.edit');
 Route::put('/areas/{area}','AreaController@update')->name('areas.update');
 Route::delete('/areas/{area}/delete','AreaController@destroy')->name('areas.destroy');
@@ -81,3 +81,12 @@ Route::get('Users/{user}', 'UserController@show')->name('users.show');
 Route::DELETE('Users/{user}/delete', 'UserController@destroy')->name('users.destroy');
 Route::get('Users/{user}/edit', 'UserController@edit')->name('users.edit');
 Route::put('Users/{user}', 'UserController@update')->name('users.update');
+
+//user addresses routes
+Route::get('Addresses', 'UserAddressesController@index')->name('addresses.index');
+Route::get('Addresses/create', 'UserAddressesController@create')->name('addresses.create');
+Route::post('Addresses/store', 'UserAddressesController@store')->name('addresses.store');
+Route::get('Addresses/{address}', 'UserAddressesController@show')->name('addresses.show');
+Route::DELETE('Addresses/{address}/delete', 'UserAddressesController@destroy')->name('addresses.destroy');
+Route::get('Addresses/{address}/edit', 'UserAddressesController@edit')->name('addresses.edit');
+Route::put('Addresses/{address}', 'UserAddressesController@update')->name('addresses.update');
