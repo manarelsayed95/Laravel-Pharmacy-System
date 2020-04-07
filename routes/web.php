@@ -20,7 +20,19 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-Route::get('orders','orderController@index');
+Route::get('/orders','OrderMedicineController@index')->name('orders.index');
+Route::get('/orders/create','OrderMedicineController@create')->name('orders.create');
+
+Route::post('/orders', 'OrderMedicineController@store')->name('orders.store');
+
+Route::get('/orders/{order}', 'OrderMedicineController@show')->name('orders.show');
+
+Route::get('/orders/{order}/edit', 'OrderMedicineController@edit')->name('orders.edit');
+
+Route::patch('/orders/{order}', 'OrderMedicineController@update')->name('orders.update');
+
+Route::delete('/orders/{order}', 'OrderMedicineController@destroy')->name('orders.destroy');
+
 Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
 
 Route::get('/doctors/{doctor}', 'DoctorController@show')->name('doctors.show');
