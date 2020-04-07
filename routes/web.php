@@ -64,4 +64,7 @@ Route::delete('/areas/{area}/delete','AreaController@destroy')->name('areas.dest
 Route::get('Users', 'UserController@index')->name('users.index');
 Route::get('Users/create', 'UserController@create')->name('users.create');
 Route::post('Users/store', 'UserController@store')->name('users.store');
-
+Route::get('Users/{user}', 'UserController@show')->name('users.show');
+Route::DELETE('Users/{user}/delete', 'UserController@destroy')->name('users.destroy');
+Route::get('Users/{user}/edit', 'UserController@edit')->name('users.edit');
+Route::put('Users/{user}', 'UserController@update')->name('users.update');
