@@ -20,14 +20,14 @@
 <section class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-12">
 
         <!-- Profile Image -->
         <div class="card card-primary card-outline">
           <div class="card-body box-profile">
             <div class="text-center">
               <img class="profile-user-img img-fluid img-circle"
-                   src="../../dist/img/user4-128x128.jpg"
+                   src="{{asset('uploads/doctors/'.$doctor->image)}}"
                    alt="User profile picture">
             </div>
 
@@ -35,15 +35,23 @@
 
             <p class="text-muted text-center">Doctor</p>
 
-            
+            @if($doctor->ban_flag)         
+            {{-- if ban status true -> unban action --}}
+              <td><a href="#" class="btn btn-success  btn-block"  style="font-weight:bold">  <i class="fas fa-user-slash">
+              </i> UnBan</a></td>           
+            @else
+            {{-- if ban status false -> ban action --}}
+              <td><a href="#" class="btn btn-warning  btn-block"  style="font-weight:bold">  <i class="fas fa-user-slash">
+              </i> Ban</a></td>    
+            @endif
 
-            <a href="#" class="btn btn-primary btn-block"><b>Recommend</b></a>
           </div>
           <!-- /.card-body -->
         </div>
         <!-- /.card -->
 
         <!-- About Me Box -->
+        
         <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title">About Doctor</h3>
@@ -93,71 +101,7 @@
         <!-- /.card -->
       </div>
       <!-- /.col -->
-      <div class="col-md-9">
-        <div class="card">
-          <div class="card-header p-2">
-            <ul class="nav nav-pills">
-              <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{route('doctors.edit',['doctor' => $doctor->id])}}" >Edit</a></li>
-            </ul>
-          </div><!-- /.card-header -->
-          <div class="card-body">
-            <div class="tab-content">
-              <div class="active tab-pane" id="activity">
-                <!-- Post -->
-                <div class="post">
-                  <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                    <span class="username">
-                    <a href="#">{{$doctor->name}}</a>
-                      <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                    </span>
-                  <span class="description">Hired on {{$doctor->created_at}}</span>
-                  </div>
-                  <!-- /.user-block -->
-                  <p>
-                    Lorem ipsum represents a long-held tradition for designers,
-                    typographers and the like. Some people hate it and argue for
-                    its demise, but others ignore the hate as they create awesome
-                    tools to help create filler text for everyone from bacon lovers
-                    to Charlie Sheen fans.
-                  </p>
-
-                
-    
-                </div>
-
-                  <form class="form-horizontal">
-                    <div class="input-group input-group-sm mb-0">
-                      <input class="form-control form-control-sm" placeholder="Add comments">
-                      <div class="input-group-append">
-                        <button type="submit" class="btn btn-danger">Add</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              
-                  <br>
-                  <br>
-                  <div class="row mb-3">
-                    <div class="col-sm-6">
-                      <img class="img-fluid" src="../../dist/img/photo1.png" alt="Photo">
-                    </div>
-                   
-                      </div>
-                      <!-- /.row -->
-                    </div>
-                    <!-- /.col -->
-                  </div>
-                  <!-- /.row -->
-
-               
-
-              
-                </div>
-                <!-- /.post -->
-              </div>
-              <!-- /.tab-pane -->
+     
                 
             <!-- /.tab-content -->
           </div><!-- /.card-body -->

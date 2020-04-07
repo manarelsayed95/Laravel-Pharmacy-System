@@ -31,9 +31,11 @@ class DoctorController extends Controller
 
        
         $doctor = Doctor::find($doctorId);
+        $pharmacies = pharmacy::all();
         
         return view('doctors.show',[
             'doctor' => $doctor,
+            'pharmacies'=>$pharmacies,
             
         ]);
     }
