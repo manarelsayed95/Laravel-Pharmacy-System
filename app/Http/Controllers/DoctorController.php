@@ -50,22 +50,18 @@ class DoctorController extends Controller
     }
 
     public function store(StoreDoctorRequest $request)
-    {
-        // $validatedData = $request->validated();
-        // $doctor = new Doctor();
-        if($request->hasfile('image'))
+    {  
+        if($request->hasFile('avatar'))
         {
-            $file = $request->file('image');
+            $file = $request->file('avatar');
             $extension = $file->getClientOriginalExtension(); // getting image extension
             $filename =time().'.'.$extension;
-            // $file->move('/uploads/doctors/',$filename);
-            Storage::disk('public')->put('avatars/'.$filename, File::get($file));
-        } 
-        else {
+            Storage::disk('public')->put('doctors/'.$filename, File::get($file));
+        } else {
             $filename = 'doctor.jpg';
         }
 
-        // $validatedData['image'] = 'avatars/'.$filename;
+    
 
         Doctor::create(
             [
@@ -74,10 +70,9 @@ class DoctorController extends Controller
             'password' =>  $request->password,
             'national_id'=> $request->national_id,
             'pharmacy_id'=> $request->pharmacy_id,
-            'image'=>$filename
+            'image'=>$filename,
         ]);
 
-        //redirect to /posts
         return redirect()->route('doctors.index');
     }
 
@@ -106,7 +101,6 @@ class DoctorController extends Controller
         $doctor->email = $request->email;
         $doctor->national_id= $request->national_id;
         $doctor->password = $request->password;
-        // $doctor->image = $request->image;
         $pharmacies = pharmacy::all();
        
         $doctor->save();

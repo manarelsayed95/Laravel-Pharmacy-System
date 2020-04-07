@@ -45,7 +45,7 @@
               </div>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{route('doctors.store')}}">
+                <form method="POST" action="{{route('doctors.store')}}" enctype="multipart/form-data">
                     @csrf
               <div class="form-group">
                 <label for="inputName">Doctor's Name</label>
@@ -63,18 +63,16 @@
                 <label for="inputProjectLeader">National ID</label>
                 <input type="text" id="inputProjectLeader"  name= "national_id"class="form-control">
               </div>
+
+
               <div class="form-group">
-                <label for="exampleInputFile">Avatar</label>
-                <div class="input-group">
-                  <div class="custom-file">
-                    <input type="file" name= "image" class="custom-file-input" id="image" accept="image/*">
-                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                  </div>
-                  {{-- <div class="input-group-append">
-                    <span class="input-group-text" id="">Upload</span>
-                  </div> --}}
+                <div class="form-group col-md-12">
+                  <label for="avatar">Avatar</label>
+                  <input type="file" class="d-block" id="avatar" name="avatar" accept="image/*">
                 </div>
               </div>
+
+           
 
               <div class="form-group">
                 <label for="inputStatus">Pharmacies</label>
@@ -85,6 +83,8 @@
                   @endforeach
                 </select>
               </div>
+            </div>
+          </div>
               
               
             </div>

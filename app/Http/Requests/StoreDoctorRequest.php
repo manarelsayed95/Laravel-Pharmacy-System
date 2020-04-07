@@ -35,7 +35,7 @@ class StoreDoctorRequest extends FormRequest
                 Rule::unique('doctors', 'national_id')->ignore($this->doctor),
         ],
 
-                // 'image' => 'image|mimes:jpg,jpeg'
+                'avatar' => 'image|mimes:jpg,jpeg'
         ];
     }
 }
