@@ -31,10 +31,11 @@
               {{-- <td>{{$pharmacy->password}}</td> --}}
                <td>{{ $pharmacy->national_id}}</td>
               <td>{{$pharmacy->revenue}}</td>
-              <td>{{$pharmacy->profil}}</td>
+              <td>{{$pharmacy->image}}</td>
               <td>{{$pharmacy->area_id}}</td>
               <td><a href="#" class="btn btn-outline-primary">Details</a>
-              <a href="#" class="btn btn-outline-warning">Edit</a>
+              <a href="{{route('pharmacies.edit',['pharmacy' => $pharmacy->id])}}" class="btn btn-outline-warning">Edit</a>
+              
                
         <form action="{{ route('pharmacies.destroy',['pharmacy'=>$pharmacy->id]) }}" method="POST" class="d-inline">
               @csrf

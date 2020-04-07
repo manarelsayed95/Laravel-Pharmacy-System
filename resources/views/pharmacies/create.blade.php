@@ -56,3 +56,8 @@
     </div>
 </div>
 @endsection
+
+
+{{-- {{ storage_public('path', $model->image) }}  --}}
+
+
