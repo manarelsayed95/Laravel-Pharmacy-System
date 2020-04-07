@@ -40,4 +40,19 @@ Route::post('/pharmacies','PharmacyController@store')->name('pharmacies.store');
 
 Route::delete('/pharmaciess/{pharmacy}','PharmacyController@destroy')->name('pharmacies.destroy');
 
-//Route::get('/posts/','PostController@index')->name('posts.destroy');
+Route::get('/medicines', 'MedicineController@index')->name('medicines.index');
+Route::get('/medicines/create','MedicineController@create')->name('medicines.create');
+Route::post('/medicines','MedicineController@store')->name('medicines.store');
+Route::get('/medicines/{medicine}', 'MedicineController@show')->name('medicines.show');
+Route::get('/medicines/{medicine}/edit','MedicineController@edit')->name('medicines.edit');
+Route::put('/medicines/{medicine}','MedicineController@update')->name('medicines.update');
+Route::delete('/medicines/{medicine}/delete','MedicineController@destroy')->name('medicines.destroy');
+
+
+Route::get('/areas', 'AreaController@index')->name('areas.index');
+Route::get('/areas/{area}', 'AreaController@show')->name('areas.show');
+Route::get('/areas/create','AreaController@create')->name('areas.create');
+Route::post('/areas','AreaController@store')->name('areas.store');
+Route::get('/areas/{area}/edit','AreaController@edit')->name('areas.edit');
+Route::put('/areas/{area}','AreaController@update')->name('areas.update');
+Route::delete('/areas/{area}/delete','AreaController@destroy')->name('areas.destroy');
