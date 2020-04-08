@@ -28,17 +28,17 @@
                 <td scope="col">{{ $user->name }}</td>
                 <td scope="col">{{ $user->email }}</td>
                 <td scope="col">{{ $user->gender }}</td>
-                <td scope="col">{{ $user->image }}</td>
+                <td><img src="{{asset('uploads/users/'.$user->image)}}" width="90px" height="90px"></td>
                 <td scope="col" colspan="2">{{ $user->date_of_birth }}</td>
                 <td scope="col">{{ $user->national_id }}</td>
                 <td scope="col">{{ $user->mobile_number }}</td>
                 <td scope="col">{{ $user->created_at }}</td>
-                <td><a href="#" class="btn btn-primary btn-sm">  <i class="fas fa-folder">
+                <td><a href="{{route('users.show',['user'=>$user['id']])}}" class="btn btn-primary btn-sm">  <i class="fas fa-folder">
                 </i> View</a></td>
-              <td><a href="#" class="btn btn-info btn-sm"> <i class="fas fa-pencil-alt">
+              <td><a href="{{route('users.edit',['user'=>$user['id']])}}" class="btn btn-info btn-sm"> <i class="fas fa-pencil-alt">
               </i> Edit</a></td> 
               <td> 
-                  <form method="POST" action="#" >
+                  <form method="POST" action="{{route('users.destroy',['user'=>$user['id']])}}">
                       @method('DELETE')
                       @csrf
                       <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete?')">Delete</button>

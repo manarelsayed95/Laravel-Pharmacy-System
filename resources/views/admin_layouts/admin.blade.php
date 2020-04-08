@@ -201,9 +201,21 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{route('users.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Users</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="./index3.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v3</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('addresses.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>UserAddresses</p>
                 </a>
               </li>
             </ul>
