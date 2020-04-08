@@ -6,6 +6,7 @@
         <thead>
             <tr>
             <th scope="col">#</th>
+            <th scope="col">medicine</th>
             <th scope="col">quantity</th>
             <th scope="col">total_price</th>
             <th scope="col">status</th>
@@ -21,6 +22,7 @@
             @foreach ($orders as $order)
             <tr>
                 <th scope="row">{{$order->id}}</th>
+                <td>{{$order->medicine->name}}</td>
                 <td>{{$order->quantity}}</td>
                 <td>{{$order->total_price}}</td>
                 <td>{{$order->order->status->status}}</td>
@@ -32,10 +34,9 @@
                 @endif
                 <td>{{$order->order->delivering_address}}</td>
                 <td>{{$order->order->user->name}}</td>
-                <td>{{$order->order->doctor->name}}</td>
+                
                 <td>
                     <form method="POST" action="{{route('orders.destroy',[$order->id])}}">
-                        <!-- <a href="{{route('orders.show',['order'=>$order->id])}}" class="btn btn-primary">View</a> -->
                         <a href="{{route('orders.edit',['order'=>$order->id])}}" class="btn btn-primary">Edit</a>
                         @csrf
                         @method('DELETE')

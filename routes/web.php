@@ -34,8 +34,6 @@ Route::patch('/orders/{order}', 'OrderMedicineController@update')->name('orders.
 Route::delete('/orders/{order}', 'OrderMedicineController@destroy')->name('orders.destroy');
 
 Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
-
-Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
 Route::get('/doctors/create', 'DoctorController@create')->name('doctors.create');
 Route::post('/doctors', 'DoctorController@store')->name('doctors.store');
 Route::get('/doctors/{doctor}', 'DoctorController@show')->name('doctors.show');
@@ -56,7 +54,7 @@ Route::put('/pharmacies/{pharmacy}','PharmacyController@update')->name('pharmaci
 //Route::get('/posts/','PostController@index')->name('posts.destroy');
 
 
-
+//medicines routes
 Route::get('/medicines', 'MedicineController@index')->name('medicines.index');
 Route::get('/medicines/create','MedicineController@create')->name('medicines.create');
 Route::post('/medicines','MedicineController@store')->name('medicines.store');
@@ -65,10 +63,12 @@ Route::get('/medicines/{medicine}/edit','MedicineController@edit')->name('medici
 Route::put('/medicines/{medicine}','MedicineController@update')->name('medicines.update');
 Route::delete('/medicines/{medicine}/delete','MedicineController@destroy')->name('medicines.destroy');
 
+
+//areas routes
 Route::get('/areas', 'AreaController@index')->name('areas.index');
-Route::get('/areas/{area}', 'AreaController@show')->name('areas.show');
 Route::get('/areas/create','AreaController@create')->name('areas.create');
 Route::post('/areas','AreaController@store')->name('areas.store');
+Route::get('/areas/{area}', 'AreaController@show')->name('areas.show');
 Route::get('/areas/{area}/edit','AreaController@edit')->name('areas.edit');
 Route::put('/areas/{area}','AreaController@update')->name('areas.update');
 Route::delete('/areas/{area}/delete','AreaController@destroy')->name('areas.destroy');
@@ -81,3 +81,12 @@ Route::get('Users/{user}', 'UserController@show')->name('users.show');
 Route::DELETE('Users/{user}/delete', 'UserController@destroy')->name('users.destroy');
 Route::get('Users/{user}/edit', 'UserController@edit')->name('users.edit');
 Route::put('Users/{user}', 'UserController@update')->name('users.update');
+
+//user addresses routes
+Route::get('Addresses', 'UserAddressesController@index')->name('addresses.index');
+Route::get('Addresses/create', 'UserAddressesController@create')->name('addresses.create');
+Route::post('Addresses/store', 'UserAddressesController@store')->name('addresses.store');
+Route::get('Addresses/{address}', 'UserAddressesController@show')->name('addresses.show');
+Route::DELETE('Addresses/{address}/delete', 'UserAddressesController@destroy')->name('addresses.destroy');
+Route::get('Addresses/{address}/edit', 'UserAddressesController@edit')->name('addresses.edit');
+Route::put('Addresses/{address}', 'UserAddressesController@update')->name('addresses.update');
