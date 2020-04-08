@@ -14,7 +14,7 @@ class ModifyStatusOrdersDefTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn('status_id');
+            // $table->dropColumn('status_id');
         });
     }
 
