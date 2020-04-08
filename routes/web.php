@@ -74,10 +74,11 @@ Route::put('/areas/{area}','AreaController@update')->name('areas.update');
 Route::delete('/areas/{area}/delete','AreaController@destroy')->name('areas.destroy');
 
 //user routes
+
 Route::get('Users', 'UserController@index')->name('users.index');
 Route::get('Users/create', 'UserController@create')->name('users.create');
 Route::post('Users/store', 'UserController@store')->name('users.store');
-Route::get('Users/{user}', 'UserController@show')->name('users.show');
+Route::get('Users/{user}', 'UserCosntroller@show')->name('users.show');
 Route::DELETE('Users/{user}/delete', 'UserController@destroy')->name('users.destroy');
 Route::get('Users/{user}/edit', 'UserController@edit')->name('users.edit');
 Route::put('Users/{user}', 'UserController@update')->name('users.update');
@@ -90,3 +91,7 @@ Route::get('Addresses/{address}', 'UserAddressesController@show')->name('address
 Route::DELETE('Addresses/{address}/delete', 'UserAddressesController@destroy')->name('addresses.destroy');
 Route::get('Addresses/{address}/edit', 'UserAddressesController@edit')->name('addresses.edit');
 Route::put('Addresses/{address}', 'UserAddressesController@update')->name('addresses.update');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

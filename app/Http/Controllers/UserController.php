@@ -9,6 +9,7 @@ use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -52,7 +53,7 @@ class UserController extends Controller
         User::create([
             'name' => $request->name,
             'email' =>  $request->email,
-            'password' =>  $request->password,
+            'password' => Hash::make($request->password),
             'mobile_number' =>  $request->mobile_number,
             'image' =>  $filename,
             'date_of_birth' =>  $request->date_of_birth,
@@ -103,7 +104,7 @@ class UserController extends Controller
         
         $user->name = $request->name;
         $user->email =  $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->mobile_number = $request->mobile_number;
         $user->image = $filename;
         $user->date_of_birth =  $request->date_of_birth;
