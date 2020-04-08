@@ -34,8 +34,6 @@ Route::patch('/orders/{order}', 'OrderMedicineController@update')->name('orders.
 Route::delete('/orders/{order}', 'OrderMedicineController@destroy')->name('orders.destroy');
 
 Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
-
-Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
 Route::get('/doctors/create', 'DoctorController@create')->name('doctors.create');
 Route::post('/doctors', 'DoctorController@store')->name('doctors.store');
 Route::get('/doctors/{doctor}', 'DoctorController@show')->name('doctors.show');

@@ -6,6 +6,15 @@
         @csrf
         {{ method_field('PATCH') }}
         <div class="form-group">
+            <label for="medicine">medicine</label>
+
+            <select class="form-control" name="medicine_id">
+            @foreach($meds as $medicine)
+                <option value="{{$medicine->id}}">{{$medicine->name}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
             <label for="quantity">quantity</label>
             <input name="quantity" value="{{$orderM->quantity}}" type="number" class="form-control" >
         </div>
@@ -59,9 +68,9 @@
         <div class="form-group">
             <label for="pharmacy">pharmacy</label>
 
-            <select class="form-control" name="">
-            @foreach($users as $user)
-                <option value=""></option>
+            <select class="form-control" name="pharmacy_id">
+            @foreach($pharmacies as $pharmacy)
+                <option value="{{$pharmacy->id}}">{{$pharmacy->name}}</option>
                 @endforeach
             </select>
         </div>
