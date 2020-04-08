@@ -29,7 +29,7 @@ class OrderMedicineController extends Controller
             // 'orders' => $orders,
             'orderM'=>$orderM,
             'meds'=>$meds,
-            'doctors'=>$doctors,
+            // 'doctors'=>$doctors,
             'users'=> $users
         ]);
     }
