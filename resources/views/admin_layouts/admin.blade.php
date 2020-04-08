@@ -189,10 +189,10 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./pharmacies.index" class="nav-link active">
+                <a href="{{route('pharmacies.index')}}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pharmacies</p>
-                </a>
+                </a> 
               </li>
               <li class="nav-item">
                 <a href="{{route('doctors.index')}}" class="nav-link">
