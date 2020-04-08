@@ -7,6 +7,7 @@ use App\User;
 use App\Doctor;
 use App\OrderMedicine;
 use App\Status;
+use App\pharmacy;
 class Order extends Model
 {
     protected $fillable=[
@@ -28,4 +29,8 @@ class Order extends Model
     public function Status(){
         return $this->belongsTo('App\Status');
     }
+    public function Pharmacy(){
+        return $this->belongsTo('App\pharmacy');
+    }
+    
 }

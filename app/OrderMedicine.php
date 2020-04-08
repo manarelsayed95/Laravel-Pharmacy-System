@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
-use App\Doctor;
+
 use App\Order;
+use App\Medicine;
 class OrderMedicine extends Model
 {
     protected $fillable=[
@@ -18,5 +19,8 @@ class OrderMedicine extends Model
     public function Order(){
         return $this->belongsTo('App\Order');
     }    
-
+    public function Medicine(){
+        return $this->belongsTo('App\Medicine');
+    } 
+    
 }

@@ -5,7 +5,7 @@
 
         <h3>Creating New Pharmacy</h3>
         <hr>
-        <form method="POST" action="{{route('pharmacies.store')}}">
+        <form method="POST" action="{{route('pharmacies.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="form-row">
               <div class="col-md-6 mb-3">

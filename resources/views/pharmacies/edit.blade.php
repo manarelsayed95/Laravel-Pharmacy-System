@@ -67,15 +67,4 @@
   </form>
 
 
-
-
-
-
-
-
-
-
-
-
-
 @endsection
