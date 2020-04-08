@@ -47,7 +47,7 @@
                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this doctor?')"><i class="fas fa-trash-alt">
                     </i> Delete</button>
                 </form>
-            </td>
+</td>
 
             @if($doctor->ban_flag)         
             {{-- if ban status true -> unban action --}}
@@ -66,5 +66,44 @@
         </table> 
         {{$doctors->links()}}
   </div>
-
   @endsection
+{{-- <script>
+  $(document).ready(function () {
+
+    $("#deleteCompany").click(function(e){
+
+    if(!confirm("Do you really want to do this?")) {
+       return false;
+     }
+
+    e.preventDefault();
+    var id = $(this).data("id");
+    // var id = $(this).attr('data-id');
+    var token = $("meta[name='csrf-token']").attr("content");
+    var url = e.target;
+
+    $.ajax(
+        {
+          url: url.href, //or you can use url: "company/"+id,
+          type: 'DELETE',
+          data: {
+            _token: token,
+                id: id
+        },
+        success: function (response){
+
+            $("#success").html(response.message)
+
+            Swal.fire(
+              'Remind!',
+              'Company deleted successfully!',
+              'success'
+            )
+        }
+     });
+      return false;
+   });
+    
+
+});
+</script> --}}

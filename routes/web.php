@@ -42,7 +42,7 @@ Route::get('/doctors/{doctor}', 'DoctorController@show')->name('doctors.show');
 Route::get('/doctors/{doctor}/edit', 'DoctorController@edit')->name('doctors.edit');
 Route::put('/doctors/{doctor}', 'DoctorController@update')->name('doctors.update');
 Route::delete('/doctors/{doctor}/delete', 'DoctorController@destroy')->name('doctors.destroy');
-
+// Route::delete('/doctors/{id}', 'DoctorController@destroy')->name('doctors.destroy');
 
 
 Route::get('/pharmacies', 'PharmacyController@index')->name('pharmacies.index');

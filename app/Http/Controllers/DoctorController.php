@@ -128,9 +128,8 @@ class DoctorController extends Controller
     {
         $request = request();
         $doctorId = $request->doctor;
-
-       
         Doctor::find($doctorId)->delete();
+
         return redirect()->route('doctors.index');
     }
 
