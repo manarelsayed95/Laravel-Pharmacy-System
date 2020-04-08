@@ -9,7 +9,7 @@ use App\pharmacy;
 use App\Http\Requests\StoreDoctorRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-
+use Hash;
 class DoctorController extends Controller
 {
     public function index()
@@ -69,7 +69,7 @@ class DoctorController extends Controller
             [
             'name' => $request->name,
             'email' =>  $request->email,
-            'password' =>  $request->password,
+            'password' =>  Hash::make($request->password),
             'national_id'=> $request->national_id,
             'pharmacy_id'=> $request->pharmacy_id,
             'image'=>$filename,
@@ -114,7 +114,7 @@ class DoctorController extends Controller
         $doctor->name= $request->name;
         $doctor->email = $request->email;
         $doctor->national_id= $request->national_id;
-        $doctor->password = $request->password;
+        $doctor->password = Hash::make($request->password);
         $doctor->image = $filename;
         $pharmacies = pharmacy::all();
        
