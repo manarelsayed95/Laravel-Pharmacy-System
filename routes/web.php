@@ -54,7 +54,7 @@ Route::put('/pharmacies/{pharmacy}','PharmacyController@update')->name('pharmaci
 //Route::get('/posts/','PostController@index')->name('posts.destroy');
 
 
-
+//medicines routes
 Route::get('/medicines', 'MedicineController@index')->name('medicines.index');
 Route::get('/medicines/create','MedicineController@create')->name('medicines.create');
 Route::post('/medicines','MedicineController@store')->name('medicines.store');
@@ -63,6 +63,8 @@ Route::get('/medicines/{medicine}/edit','MedicineController@edit')->name('medici
 Route::put('/medicines/{medicine}','MedicineController@update')->name('medicines.update');
 Route::delete('/medicines/{medicine}/delete','MedicineController@destroy')->name('medicines.destroy');
 
+
+//areas routes
 Route::get('/areas', 'AreaController@index')->name('areas.index');
 Route::get('/areas/create','AreaController@create')->name('areas.create');
 Route::post('/areas','AreaController@store')->name('areas.store');
