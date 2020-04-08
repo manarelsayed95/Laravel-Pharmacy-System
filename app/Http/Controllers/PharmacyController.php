@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\pharmacy;
-
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class PharmacyController extends Controller
 {
@@ -35,6 +36,9 @@ class PharmacyController extends Controller
 		return view('pharmacies.show',['pharmacy'=>$pharmacy]);
     }
 
+
+
+
     public function store(Request $request){
         // $pharmacy=new pharmacy();
         // $pharmacy->created_at=request('created_at');
@@ -47,6 +51,16 @@ class PharmacyController extends Controller
         // $pharmacy->area_id=request('area_id');
         // $pharmacy->save();
 
+        if($request->hasFile('image'))
+        {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $filename =time().'.'.$extension;
+            Storage::disk('public')->put('pharmacies/'.$filename, File::get($file));
+        } else {
+            $filename = 'pharmacy.jpg';
+        }
+
 
         pharmacy::create([
           
@@ -57,7 +71,7 @@ class PharmacyController extends Controller
             'password'=>$request->password,
             'national_id'=>$request->national_id,
             'revenue'=>$request->revenue,
-            'image'=>$request->image,
+            'image'=>$filename,
             'area_id'=>$request->area_id,
         
         ]);
@@ -88,48 +102,27 @@ class PharmacyController extends Controller
         ]);
     }
 
-    
-    public function update()
+   
+
+
+public function update()
 {   
+  
     $request=request();
    
-    $pharmacyId= $request->pharamcy;
-   try {
-    $pharmacy=pharmacy::findOrFail($pharmacyId);
-
-    $pharmacy ->update([
-        'name'   => $request->get('name'),
-        'email'   => $request->get('email'),
-        'password'   => $request->get('password'),
-        'national_id'   => $request->get('national_id'),
-        'revenue'   => $request->get('revenue'),
-        'area_id'   => $request->get('area_id'),
-    ]);
-    // // $pharmacy->created_at=$request->get('created_at');
-    // $pharmacy->name=$request->get('name');
-    // $pharmacy->email=$request->get('email');
-    // $pharmacy->password=$request->get('password');
-    // $pharmacy->national_id=$request->get('national_id');
-    // $pharmacy->revenue=$request->get('revenue');
-    // // $pharmacy->image=$request->get('image');
-    // $pharmacy->area_id=$request->get('area_id');
-    // $pharmacy->save();
-    return redirect()
-            ->back()
-            ->with([
-                'success' => 'Updated successfully'
-            ]);
-
-    // return redirect('/pharmacies');
-
-   } catch( \Exception $e) {
-       return redirect()
-                ->back()
-                ->with([
-                    'error' => 'Something goes wrong'
-                ]);
-   }
-    
+    $pharmacyId= $request->pharmacy;
+    $pharmacy=pharmacy::find($pharmacyId);
+    // $pharmacy->created_at=$request->get('created_at');
+    $pharmacy->name=$request->get('name');
+    $pharmacy->email=$request->get('email');
+    $pharmacy->password=$request->get('password');
+    $pharmacy->national_id=$request->get('national_id');
+    $pharmacy->revenue=$request->get('revenue');
+     $pharmacy->image=$request->get('image');
+    $pharmacy->area_id=$request->get('area_id');
+    $pharmacy->save();
+     
+    return redirect('/pharmacies');
 }
 
 
