@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ModifyStatusesOrdersTable extends Migration
+class ModifyOrderMedicinesOnDCTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class ModifyStatusesOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            // $table->foreignId('status_id')->constrained();
+        Schema::table('order_medicines', function (Blueprint $table) {
+            $table->dropColumn('order_id');
+            $table->dropColumn('medicine_id');
         });
     }
 
@@ -25,7 +26,7 @@ class ModifyStatusesOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
+        Schema::table('order_medicines', function (Blueprint $table) {
             //
         });
     }
