@@ -20,7 +20,18 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-Route::get('orders','orderController@index');
+Route::get('/orders','OrderMedicineController@index')->name('orders.index');
+Route::get('/orders/create','OrderMedicineController@create')->name('orders.create');
+
+Route::post('/orders', 'OrderMedicineController@store')->name('orders.store');
+
+Route::get('/orders/{order}', 'OrderMedicineController@show')->name('orders.show');
+
+Route::get('/orders/{order}/edit', 'OrderMedicineController@edit')->name('orders.edit');
+
+Route::patch('/orders/{order}', 'OrderMedicineController@update')->name('orders.update');
+
+Route::delete('/orders/{order}', 'OrderMedicineController@destroy')->name('orders.destroy');
 
 Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
 Route::get('/doctors/create', 'DoctorController@create')->name('doctors.create');
@@ -43,7 +54,7 @@ Route::put('/pharmacies/{pharmacy}','PharmacyController@update')->name('pharmaci
 //Route::get('/posts/','PostController@index')->name('posts.destroy');
 
 
-
+//medicines routes
 Route::get('/medicines', 'MedicineController@index')->name('medicines.index');
 Route::get('/medicines/create','MedicineController@create')->name('medicines.create');
 Route::post('/medicines','MedicineController@store')->name('medicines.store');
@@ -52,10 +63,30 @@ Route::get('/medicines/{medicine}/edit','MedicineController@edit')->name('medici
 Route::put('/medicines/{medicine}','MedicineController@update')->name('medicines.update');
 Route::delete('/medicines/{medicine}/delete','MedicineController@destroy')->name('medicines.destroy');
 
+
+//areas routes
 Route::get('/areas', 'AreaController@index')->name('areas.index');
-Route::get('/areas/{area}', 'AreaController@show')->name('areas.show');
 Route::get('/areas/create','AreaController@create')->name('areas.create');
 Route::post('/areas','AreaController@store')->name('areas.store');
+Route::get('/areas/{area}', 'AreaController@show')->name('areas.show');
 Route::get('/areas/{area}/edit','AreaController@edit')->name('areas.edit');
 Route::put('/areas/{area}','AreaController@update')->name('areas.update');
 Route::delete('/areas/{area}/delete','AreaController@destroy')->name('areas.destroy');
+
+//user routes
+Route::get('Users', 'UserController@index')->name('users.index');
+Route::get('Users/create', 'UserController@create')->name('users.create');
+Route::post('Users/store', 'UserController@store')->name('users.store');
+Route::get('Users/{user}', 'UserController@show')->name('users.show');
+Route::DELETE('Users/{user}/delete', 'UserController@destroy')->name('users.destroy');
+Route::get('Users/{user}/edit', 'UserController@edit')->name('users.edit');
+Route::put('Users/{user}', 'UserController@update')->name('users.update');
+
+//user addresses routes
+Route::get('Addresses', 'UserAddressesController@index')->name('addresses.index');
+Route::get('Addresses/create', 'UserAddressesController@create')->name('addresses.create');
+Route::post('Addresses/store', 'UserAddressesController@store')->name('addresses.store');
+Route::get('Addresses/{address}', 'UserAddressesController@show')->name('addresses.show');
+Route::DELETE('Addresses/{address}/delete', 'UserAddressesController@destroy')->name('addresses.destroy');
+Route::get('Addresses/{address}/edit', 'UserAddressesController@edit')->name('addresses.edit');
+Route::put('Addresses/{address}', 'UserAddressesController@update')->name('addresses.update');
