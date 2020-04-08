@@ -74,7 +74,6 @@ Route::put('/areas/{area}','AreaController@update')->name('areas.update');
 Route::delete('/areas/{area}/delete','AreaController@destroy')->name('areas.destroy');
 
 //user routes
-
 Route::get('Users', 'UserController@index')->name('users.index');
 Route::get('Users/create', 'UserController@create')->name('users.create');
 Route::post('Users/store', 'UserController@store')->name('users.store');

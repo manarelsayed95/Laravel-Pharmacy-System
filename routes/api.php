@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,7 +25,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::post('User/register', 'API\UserController@register')->middleware('guest');
+Route::post('User/register','API\UserController@register')->middleware('guest');
+Route::get('/Addresses','API\UserAddressesController@index')->middleware('auth:sanctum');
+Route::post('/Addresses/store','API\UserAddressesController@store')->middleware('auth:sanctum');
+Route::get('/Addresses/{address}','API\UserAddressesController@show')->middleware('auth:sanctum');
+Route::put('/Addresses/{address}/update','API\UserAddressesController@update')->middleware('auth:sanctum');
 
 
 Route::post('/sanctum/token', function (Request $request) {

@@ -85,7 +85,7 @@ class UserAddressesController extends Controller
     public function update(Request $request){
 
         $request=request();
-       $addressId=$request->address;
+        $addressId=$request->address;
         $address= UserAddresses::find($addressId);
 
         $address->street_name = $request->street_name;
