@@ -1,3 +1,4 @@
+@extends('auth')
 <!DOCTYPE html>
 <html>
 <head>

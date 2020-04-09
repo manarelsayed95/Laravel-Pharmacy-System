@@ -1,30 +1,40 @@
 @extends('admin_layouts.admin')
 @section('content')
-<div class="container">
-    <h1>orders</h1>
-    <table class="table table-striped">
-        <thead>
+
+<div class="d-flex align-content-stretch flex-wrap" style="text-align:center">
+    <div class="container " style="text-align:center">
+        <br>
+        <a href="{{route('orders.create')}}" class="btn btn-success mb-5" style="align-center">Create Order</a>
+    <table class="table table-bordered table-hover table-dark" class="mx-auto" style="background-color: 	rgb(52, 57, 64)">
+        <thead class="thead-light">
             <tr>
             <th scope="col">#</th>
-            <th scope="col">medicine</th>
-            <th scope="col">quantity</th>
-            <th scope="col">total_price</th>
-            <th scope="col">status</th>
-            <th scope="col">action</th>
-            <th scope="col">is_insured</th>
-            <th scope="col">delivering_address</th>
-            <th scope="col">user</th>
-            <th scope="col">doctor</th>
-            <th scope="col">actions</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Delivering Address</th>
+            <th scope="col">Creation Date</th>
+            <th scope="col">Doctor Name</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+            <th scope="col">Insured</th>
+            <th scope="col">Assigned Pharmacy</th>
+            <th scope="col"></th>
+            <th scope="col">Actions</th>
+            <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
             @foreach ($orders as $order)
             <tr>
                 <th scope="row">{{$order->id}}</th>
-                <td>{{$order->medicine->name}}</td>
-                <td>{{$order->quantity}}</td>
-                <td>{{$order->total_price}}</td>
+                
+                <td>{{$order->order->user->name}}</td>
+                <td>{{$order->order->delivering_address}}</td>
+                <td>{{$order->created_At}}</td>
+                @if(is_null($order->order->doctor_id))
+                <td></td>
+                @else
+                <td>{{$order->order->doctor->name}}</td>
+                @endif
                 <td>{{$order->order->status->status}}</td>
                 <td>{{$order->order->action}}</td>
                 @if($order->order->is_insured)
@@ -32,24 +42,33 @@
                 @else
                 <td>No</td>
                 @endif
-                <td>{{$order->order->delivering_address}}</td>
-                <td>{{$order->order->user->name}}</td>
+                @if(is_null($order->order->pharmacy_id))
+                <td></td>
+                @else
+                <td>{{$order->order->pharmacy->name}}</td>
+                @endif
                 
-                <td>
+                
                     <form method="POST" action="{{route('orders.destroy',[$order->id])}}">
-                        <a href="{{route('orders.edit',['order'=>$order->id])}}" class="btn btn-primary">Edit</a>
+                    <td>
+                    <a href="{{route('orders.show',['order' => $order->id])}}" class="btn btn-primary btn-sm">  <i class="fas fa-folder">
+            </i> View</a></td>
+            <td>
+                        <a href="{{route('orders.edit',['order'=>$order->id])}}" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt">
+            </i> Edit</a></a></td>
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-primary" type="submit" on_click="confirm('are you sure you want to delete this order?')">Delete</button>
-                       
+                        <td>
+                        <button class="btn btn-danger" type="submit" on_click="confirm('are you sure you want to delete this order?')"  role="button" aria-pressed="true">Delete</button>
+                        </td>
                     </form>
-                </td>
+                    
             </tr>
             @endforeach
-        <a href="{{route('orders.create')}}" class="btn btn-success" >Create Order</a>
+
         </tbody>
     </table>
-
+    </div>
 </div>
 
 @endsection

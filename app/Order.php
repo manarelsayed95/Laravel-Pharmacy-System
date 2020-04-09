@@ -24,7 +24,7 @@ class Order extends Model
         return $this->belongsTo('App\User');
     }
     public function Doctor(){
-        return $this->belongsTo('App\Doctor');
+        return $this->belongsTo('App\Doctor','doctor_id');
     }
     public function Status(){
         return $this->belongsTo('App\Status');
