@@ -13,7 +13,7 @@
             <th scope="col">Delivering Address</th>
             <th scope="col">Creation Date</th>
             <th scope="col">Doctor Name</th>
-            <th scope="col">Status</th>
+            <!-- <th scope="col">Status</th> -->
             <th scope="col">Action</th>
             <th scope="col">Insured</th>
             <th scope="col">Assigned Pharmacy</th>
@@ -35,7 +35,7 @@
                 @else
                 <td>{{$order->order->doctor->name}}</td>
                 @endif
-                <td>{{$order->order->status->status}}</td>
+             
                 <td>{{$order->order->action}}</td>
                 @if($order->order->is_insured)
                 <td>Yes</td>
