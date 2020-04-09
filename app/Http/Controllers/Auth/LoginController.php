@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
 use Auth;
+use App\Doctor;
 
 class LoginController extends Controller
 {
@@ -40,7 +41,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        // $this->middleware('guest:admin')->except('logout');
+        $this->middleware('guest:doctor')->except('logout');
         // $this->middleware('guest:web')->except('logout');
     }
 
@@ -48,7 +49,23 @@ class LoginController extends Controller
     {
         return view('auth.login', ['url' => 'admin']);
     }
+    public function showDoctorLoginForm()
+    {
+        return view('auth.login', ['url' => 'doctor']);
+    }
 
+    public function doctorLogin(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::guard('doctor')->attempt($credentials)) {
+
+            return redirect()->intended('/doctor');
+            
+        }
+        else{dd('error');}
+        return back()->withInput($request->only('email', 'remember'));
+    }
     public function adminLogin(Request $request)
     {
         $this->validate($request, [
