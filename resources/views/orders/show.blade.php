@@ -30,7 +30,7 @@
     <h5 class="card-text">Username:- {{$order->order->user->name}}</h5>
     <h5 class="card-text">Address:- {{$order->order->delivering_address }}</h5>
     <h5 class="card-text">Quantity:- {{ $order->quantity }}</h5>
-    <h5 class="card-text">Total Price:- {{ $order->total_price }}</h5>
+    <h5 class="card-text">Total Price:- {{ $order->order->total_price }}</h5>
     <h5 class="card-text">Order Status:- {{ $order->order->status->status }}</h5>
     <h5 class="card-text">Action:- {{ $order->order->action }}</h5>
     @if($order->order->is_insured)
