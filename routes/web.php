@@ -93,7 +93,7 @@ Route::DELETE('Addresses/{address}/delete', 'UserAddressesController@destroy')->
 Route::get('Addresses/{address}/edit', 'UserAddressesController@edit')->name('addresses.edit');
 Route::put('Addresses/{address}', 'UserAddressesController@update')->name('addresses.update');
 
-//login as admin
+// login as admin
 Auth::routes();
     Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm');
     Route::post('/login/admin', 'Auth\LoginController@adminLogin');
@@ -105,3 +105,6 @@ Auth::routes();
 //     Route::get('logout/', 'Auth\AdminLoginController@logout')->name('admin.logout');
 //     Route::get('/', 'AdminController@index')->name('admin.dashboard');
 //    }) ;
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
