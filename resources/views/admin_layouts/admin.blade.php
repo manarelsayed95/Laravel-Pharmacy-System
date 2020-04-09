@@ -1,3 +1,5 @@
+@extends('auth')
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -172,7 +174,7 @@
           <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a  class="d-block">Admin</a>
         </div>
       </div>
 
@@ -191,7 +193,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./pharmacies.index" class="nav-link active">
+                <a href="{{route('pharmacies.index')}}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pharmacies</p>
                 </a>

@@ -59,7 +59,7 @@ class MedicineController extends Controller
             'type'=> $request->type,
             'price'=> $request->price,
         ]);
-        return redirect('/medicines');
+        return redirect()->route('medicines.index');
     }
 
 
@@ -92,7 +92,7 @@ class MedicineController extends Controller
         $medicine->type= $request->get('type');
         $medicine->price= $request->get('price');
         $medicine->save();
-    return redirect('/medicines');
+        return redirect()->route('medicines.index');
 }
 
 
@@ -101,7 +101,7 @@ class MedicineController extends Controller
         $request=request();
         $medicineId= $request->medicine;
         Medicine::find($medicineId)->delete();
-        return redirect('/medicines');
+        return redirect()->route('medicines.index');
     }
    
 }
