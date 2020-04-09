@@ -76,8 +76,8 @@ class DoctorController extends Controller
             'pharmacy_id'=> $request->pharmacy_id,
             'image'=>$filename,
         ]);
-        return redirect()->back();
-        // return redirect()->route('doctors.index');
+       
+        return redirect()->route('doctors.index');
     }
 
 
@@ -138,7 +138,7 @@ class DoctorController extends Controller
             ]);
             $doctor->save();
             return redirect()->back();
-            // return redirect()->route('doctors.index');
+            
                 }
             else{dd('ban failed');}
         
@@ -157,8 +157,6 @@ class DoctorController extends Controller
                 ]);
                 $doctor->save();
             }
-
-            // return redirect()->route('doctors.index');
             return redirect()->back();
   
     }
