@@ -14,6 +14,7 @@ class Order extends Model
         'is_insured',
         'action',
         'delivering_address',
+        'total_price',
         'user_id',
         'doctor_id',
         'pharmacy_id',

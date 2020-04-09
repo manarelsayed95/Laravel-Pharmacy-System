@@ -17,35 +17,34 @@
 <div class="container">
         <form method="post" action="{{route('orders.store')}}"> 
         @csrf
-        <div class="row form-group" id="inputFormRow">
-            <div class="col-md-10">
-                <label for="medicine">medicine</label>
-                <input name="name" type="text" class="form-control" >
-                
-                <!-- <div class=" input-group-append col-md-2"> -->
-                    <div class="input-group-append col-md-2"><a id="addRow" class=""><i class="fas fa-plus"></i></a></div>
-                    <!-- <div class="col-md-3"><a id="removeRow" type="button" class=""><i class="fas fa-minus"></i></a></div> -->
-                    
-                <!-- </div> -->
+        <div class="medicine"  id="inputFormRow">
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label for="medicine">medicine</label>
+                    <a id="addRow" class=""><i class="fas fa-plus"></i></a>
+                    <input name="name" type="text" class="form-control" >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="quantity">quantity</label>
+                <input name="quantity" type="number" class="form-control" >
+            </div>
+            <div class="form-group">
+                <label for="type">Type</label>
+                <input name="type" type="text" class="form-control" >
+            </div>
+            <div class="form-group">
+                <label for="price">price</label>
+                <input name="price"  type="number" class="form-control" id="price">
             </div>
         </div>
         <div id="newRow"></div>
         
 
-        <div class="form-group">
-            <label for="quantity">quantity</label>
-            <input name="quantity" type="number" class="form-control" >
-        </div>
-        <div class="form-group">
-            <label for="type">Type</label>
-            <input name="type" type="text" class="form-control" >
-        </div>
-        <div class="form-group">
-            <label for="price">price</label>
-            <input name="price"  type="number" class="form-control">
-        </div>
+        
         <div class="form-group">
             <label for="total_price">total price</label>
+            <!-- <input class="form-control" value="{{$total_price}}" type="text" placeholder="Readonly input here…" readonly> -->
             <input name="total_price"  type="number" class="form-control">
         </div>
         <div class="form-group">
@@ -83,13 +82,25 @@
     // add row
     $("#addRow").click(function () {
         var html = '';
-        html += '<div class="row form-group" id="inputFormRow">';
-        html += '<div class="col-md-10">';
+        html +='<div class="medicine"  id="inputFormRow">';
+        html += '<div class="row form-group">';
+        html += '<div class="col-md-12">';
         html += '<label for="medicine">medicine</label>';
-        html += '<input name="name" type="text" class="form-control" >';
-        // html += '<div class="input-group-append col-md-2">';
-        html += '<div class="col-md-2"><a id="removeRow" type="button" class=""><i class="fas fa-minus"></i></a></div>';
-        // html += '</div>';            
+        html += '<a id="removeRow" type="button" class=""><i class="fas fa-minus"></i></a>';
+        html += '<input name="name[]" type="text" class="form-control" >';     
+        html += '</div>';
+        html += '</div>';
+        html += '<div class="form-group">';
+        html += '<label for="quantity">quantity</label>';
+        html += '<input name="quantity[]" type="number" class="form-control" >';
+        html += '</div>';
+        html += '<div class="form-group">';
+        html += '<label for="type">Type</label>';
+        html += '<input name="type[]" type="text" class="form-control" >';
+        html += '</div>';
+        html += '<div class="form-group">';
+        html += '<label for="price">price</label>';
+        html += '<input name="price[]"  type="number" class="form-control">';
         html += '</div>';
         html += '</div>';
         $('#newRow').append(html);
@@ -99,5 +110,8 @@
     $(document).on('click', '#removeRow', function () {
         $(this).closest('#inputFormRow').remove();
     });
+    // $("#price").keyup(function(){
+    //     $("#price");
+    // });
 </script>
 @endsection
