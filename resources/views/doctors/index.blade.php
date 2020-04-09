@@ -50,8 +50,6 @@
             </td>
 
 <form method="POST" class='d-inline' action=''>
-              {{-- <input type='hidden' name='_method' value='PATCH'> --}}
-              {{-- <input type="hidden" name="_method" value="PUT"> --}}
               @method('PATCH') 
               @csrf
             @if($doctor->ban_flag)         

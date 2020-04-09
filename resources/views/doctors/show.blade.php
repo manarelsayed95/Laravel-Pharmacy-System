@@ -35,15 +35,19 @@
 
             <p class="text-muted text-center">Doctor</p>
 
+           <form method="POST" class='d-inline' action=''>
+              @method('PATCH') 
+              @csrf
             @if($doctor->ban_flag)         
             {{-- if ban status true -> unban action --}}
-              <td><a href="#" class="btn btn-success  btn-block"  style="font-weight:bold">  <i class="fas fa-user-slash">
+              <td><a href="{{route('doctors.unban',['doctor' => $doctor->id])}}" class="btn btn-success btn-block" data-id='$doctor->id' >  <i class="fas fa-user-slash">
               </i> UnBan</a></td>           
             @else
             {{-- if ban status false -> ban action --}}
-              <td><a href="#" class="btn btn-warning  btn-block"  style="font-weight:bold">  <i class="fas fa-user-slash">
+              <td><a href="{{route('doctors.ban',['doctor' => $doctor->id])}}" class="btn btn-warning btn-block" data-id='$doctor->id'>  <i class="fas fa-user-slash">
               </i> Ban</a></td>    
             @endif
+          </form>
 
           </div>
           <!-- /.card-body -->
