@@ -105,6 +105,17 @@ Auth::routes();
 //     Route::get('logout/', 'Auth\AdminLoginController@logout')->name('admin.logout');
 //     Route::get('/', 'AdminController@index')->name('admin.dashboard');
 //    }) ;
+
+Route::get('/login/doctor', 'Auth\LoginController@showDoctorLoginForm');
+Route::post('/login/doctor', 'Auth\LoginController@doctorLogin');
+Route::view('/home', 'home')->middleware('auth');
+
+Route::view('/doctor', 'doctor');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

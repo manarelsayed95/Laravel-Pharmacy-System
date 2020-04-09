@@ -5,11 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-
 use Auth;
-
 class LoginController extends Controller
 {
     /*
@@ -37,36 +35,29 @@ class LoginController extends Controller
      *
      * @return void
      */
+    
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->middleware('guest:admin')->except('logout');
-        $this->middleware('guest:web')->except('logout');
+        $this->middleware('guest:doctor')->except('logout');
     }
 
-    public function showAdminLoginForm()
+    public function showDoctorLoginForm()
     {
-        return view('auth.login', ['url' => 'admin']);
+        return view('auth.login', ['url' => 'doctor']);
     }
 
-    public function adminLogin(Request $request)
+    public function doctorLogin(Request $request)
     {
-        $this->validate($request, [
-            'email'   => 'required|email',
-            'password' => 'required|min:6'
-        ]);
+        
+        $credentials = $request->only('email', 'password');
 
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        if (Auth::guard('doctor')->attempt($credentials)) {
 
-           // return Redirect::action('LoginController@index');
-           // return redirect()->action('Auth\LoginController@index');
-
-        return redirect()->intended('/admin');
+            return redirect()->intended('/doctor');
         }
+        else{dd('Error!!');}
         return back()->withInput($request->only('email', 'remember'));
-    }
-    public function index()
-    {
-        return view('admin');
     }
 }

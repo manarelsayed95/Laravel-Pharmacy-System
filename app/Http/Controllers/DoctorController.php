@@ -10,6 +10,7 @@ use App\Http\Requests\StoreDoctorRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Hash;
+use Auth;
 class DoctorController extends Controller
 {
     public function index()
