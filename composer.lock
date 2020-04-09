@@ -172,6 +172,12 @@
                 "trait",
                 "user"
             ],
+            "funding": [
+                {
+                    "url": "https://paypal.me/antonkomarev",
+                    "type": "custom"
+                }
+            ],
             "time": "2020-03-06T20:56:55+00:00"
         },
         {
@@ -1417,9 +1423,6 @@
                 "md",
                 "parser"
             ],
-<<<<<<< HEAD
-            "time": "2020-04-05T16:01:48+00:00"
-=======
             "funding": [
                 {
                     "url": "https://github.com/colinodell",
@@ -1434,8 +1437,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-03-25T19:55:28+00:00"
->>>>>>> c4c5e10f93336e6b77535a94df79b37cf667cfc4
+            "time": "2020-04-05T16:01:48+00:00"
         },
         {
             "name": "league/flysystem",
@@ -2422,6 +2424,12 @@
                 "roles",
                 "security",
                 "spatie"
+            ],
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
             ],
             "time": "2020-03-03T21:31:02+00:00"
         },
@@ -5108,9 +5116,6 @@
                 "php",
                 "symfony"
             ],
-<<<<<<< HEAD
-            "time": "2020-04-04T19:56:08+00:00"
-=======
             "funding": [
                 {
                     "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
@@ -5125,8 +5130,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-03-07T12:46:00+00:00"
->>>>>>> c4c5e10f93336e6b77535a94df79b37cf667cfc4
+            "time": "2020-04-04T19:56:08+00:00"
         },
         {
             "name": "phar-io/manifest",

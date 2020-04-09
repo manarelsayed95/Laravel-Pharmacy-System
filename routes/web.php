@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/admin', function () {
     return view('admin');
-});
+ });
+
 
 Route::get('/orders','OrderMedicineController@index')->name('orders.index');
 Route::get('/orders/create','OrderMedicineController@create')->name('orders.create');
@@ -90,3 +92,16 @@ Route::get('Addresses/{address}', 'UserAddressesController@show')->name('address
 Route::DELETE('Addresses/{address}/delete', 'UserAddressesController@destroy')->name('addresses.destroy');
 Route::get('Addresses/{address}/edit', 'UserAddressesController@edit')->name('addresses.edit');
 Route::put('Addresses/{address}', 'UserAddressesController@update')->name('addresses.update');
+
+//login as admin
+Auth::routes();
+    Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm');
+    Route::post('/login/admin', 'Auth\LoginController@adminLogin');
+   // Route::view('/home', 'home')->middleware('auth');
+   // Route::view('/admin', 'admin')->middleware('auth');
+//    Route::prefix('admin')->group(function() {
+//     Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
+//     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+//     Route::get('logout/', 'Auth\AdminLoginController@logout')->name('admin.logout');
+//     Route::get('/', 'AdminController@index')->name('admin.dashboard');
+//    }) ;
