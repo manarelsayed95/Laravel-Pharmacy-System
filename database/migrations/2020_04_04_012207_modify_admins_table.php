@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeyUserAddressesTable extends Migration
+class ModifyAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddForeignKeyUserAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::table('user_addresses', function (Blueprint $table) {
-            $table->foreignId('area_id')->constrained()->onDelete('cascade')->change();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade')->change();
+        Schema::table('admins', function (Blueprint $table) {
+            $table->string('password');
+            $table->string('email');
         });
     }
 
@@ -26,7 +26,7 @@ class AddForeignKeyUserAddressesTable extends Migration
      */
     public function down()
     {
-        Schema::table('user_addresses', function (Blueprint $table) {
+        Schema::table('admins', function (Blueprint $table) {
             //
         });
     }
