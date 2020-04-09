@@ -1,6 +1,18 @@
 @extends('admin_layouts.admin')
 @section('content')
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" >Editing a medicine</a>
+</nav>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class="container">
         <form method="post" action="/orders/{{ $orderM->id }}"> 
         @csrf

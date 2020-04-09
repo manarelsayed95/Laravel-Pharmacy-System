@@ -17,7 +17,7 @@ class ModifyStatusesInserTable extends Migration
             
             DB::insert('insert into statuses (id, status) values (1, "New")', [1, 'New']);
             DB::insert('insert into statuses (id, status) values (2, "Processing")', [2, 'Processing']);
-            DB::insert('insert into statuses (id, status) values (3, "WaitingForProcessingrUserConfirmation")', [3, 'WaitingForProcessingrUserConfirmation']);
+            DB::insert('insert into statuses (id, status) values (3, "WaitingForUserConfirmation")', [3, 'WaitingForUserConfirmation']);
             DB::insert('insert into statuses (id, status) values (4, "Canceled")', [4, 'Canceled']);
             DB::insert('insert into statuses (id, status) values (5, "Confirmed")', [5, 'Confirmed']);
             DB::insert('insert into statuses (id, status) values (6, "Delivered")', [6, 'Delivered']);

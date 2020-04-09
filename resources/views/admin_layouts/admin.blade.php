@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -222,6 +224,12 @@
                 <a href="{{route('medicines.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Medicines</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('orders.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Orders</p>
                 </a>
               </li>
             </ul>
