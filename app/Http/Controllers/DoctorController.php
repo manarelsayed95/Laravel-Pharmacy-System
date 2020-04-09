@@ -76,8 +76,8 @@ class DoctorController extends Controller
             'pharmacy_id'=> $request->pharmacy_id,
             'image'=>$filename,
         ]);
-
-        return redirect()->route('doctors.index');
+        return redirect()->back();
+        // return redirect()->route('doctors.index');
     }
 
 
@@ -123,6 +123,45 @@ class DoctorController extends Controller
         return redirect()->route('doctors.index');
     }
 
+
+    public function ban()
+    {
+
+        $request = request();
+        $doctorId = $request->doctor;
+
+            $doctor = Doctor::find($doctorId);
+            $doctor->ban();
+                if($doctor->ban()){
+            $doctor->update([
+                'ban_flag' => "1"
+            ]);
+            $doctor->save();
+            return redirect()->back();
+            // return redirect()->route('doctors.index');
+                }
+            else{dd('ban failed');}
+        
+    }
+
+    
+    public function unban()
+    {
+        $request = request();
+        $doctorId = $request->doctor;
+        
+            $doctor = Doctor::find($doctorId);
+            if ($doctor->ban_flag){
+                $doctor->update([
+                    'ban_flag' => "0"
+                ]);
+                $doctor->save();
+            }
+
+            // return redirect()->route('doctors.index');
+            return redirect()->back();
+  
+    }
 
    
 }
