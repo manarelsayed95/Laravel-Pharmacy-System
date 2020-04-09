@@ -20,7 +20,8 @@ class Doctor extends Authenticatable  implements BannableContract
         'password', 
         'national_id', 
         'ban_flag', 
-        'pharmacy_id'
+        'pharmacy_id',
+        'banned_at'
         
     ];
     protected $hidden = [

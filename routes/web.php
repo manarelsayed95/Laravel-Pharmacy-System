@@ -155,6 +155,8 @@ Route::get('/doctors/{doctor}', 'DoctorController@show')->name('doctors.show');
 Route::get('/doctors/{doctor}/edit', 'DoctorController@edit')->name('doctors.edit');
 Route::put('/doctors/{doctor}', 'DoctorController@update')->name('doctors.update');
 Route::delete('/doctors/{doctor}/delete', 'DoctorController@destroy')->name('doctors.destroy');
+Route::get('/doctors/{doctor}/ban', 'DoctorController@ban')->name('doctors.ban');
+Route::get('/doctors/{doctor}/unban', 'DoctorController@unban')->name('doctors.unban');
 
 
 //pharmacies routes
