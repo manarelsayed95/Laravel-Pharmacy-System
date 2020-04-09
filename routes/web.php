@@ -103,7 +103,7 @@ Route::get('/login/doctor', 'Auth\LoginController@showDoctorLoginForm');
 Route::post('/login/doctor', 'Auth\LoginController@doctorLogin');
 // Route::view('/home', 'home')->middleware('auth');
 
-// Route::view('/doctor', 'doctor');
+Route::view('/doctor', 'doctor');
 
 
 
