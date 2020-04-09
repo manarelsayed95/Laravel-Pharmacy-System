@@ -9,6 +9,8 @@ use App\pharmacy;
 use App\Http\Requests\StoreDoctorRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Hash;
+use Auth;
 
 class DoctorController extends Controller
 {
@@ -69,13 +71,13 @@ class DoctorController extends Controller
             [
             'name' => $request->name,
             'email' =>  $request->email,
-            'password' =>  $request->password,
+            'password' => Hash::make($request->password),
             'national_id'=> $request->national_id,
             'pharmacy_id'=> $request->pharmacy_id,
             'image'=>$filename,
         ]);
-
-        return redirect()->route('doctors.index');
+        return redirect()->back();
+        // return redirect()->route('doctors.index');
     }
 
 
@@ -102,7 +104,7 @@ class DoctorController extends Controller
         $doctor->name= $request->name;
         $doctor->email = $request->email;
         $doctor->national_id= $request->national_id;
-        $doctor->password = $request->password;
+        $doctor->password = Hash::make($request->password);
         $pharmacies = pharmacy::all();
        
         $doctor->save();
@@ -121,6 +123,45 @@ class DoctorController extends Controller
         return redirect()->route('doctors.index');
     }
 
+
+    public function ban()
+    {
+
+        $request = request();
+        $doctorId = $request->doctor;
+
+            $doctor = Doctor::find($doctorId);
+            $doctor->ban();
+                if($doctor->ban()){
+            $doctor->update([
+                'ban_flag' => "1"
+            ]);
+            $doctor->save();
+            return redirect()->back();
+            // return redirect()->route('doctors.index');
+                }
+            else{dd('ban failed');}
+        
+    }
+
+    
+    public function unban()
+    {
+        $request = request();
+        $doctorId = $request->doctor;
+        
+            $doctor = Doctor::find($doctorId);
+            if ($doctor->ban_flag){
+                $doctor->update([
+                    'ban_flag' => "0"
+                ]);
+                $doctor->save();
+            }
+
+            // return redirect()->route('doctors.index');
+            return redirect()->back();
+  
+    }
 
    
 }

@@ -22,13 +22,18 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if ($guard == "admin" && Auth::guard($guard)->check()) {
+        // if ($guard == "admin" && Auth::guard($guard)->check()) {
           
-            //return Redirect::action('LoginController@index');
-            //return redirect()->action('Auth\LoginController@index');
+        //     //return Redirect::action('LoginController@index');
+        //     //return redirect()->action('Auth\LoginController@index');
 
-              return redirect('/admin');
+        //       return redirect('/admin');
+        // }
+
+        if ($guard == "doctor" && Auth::guard($guard)->check()) {
+            return redirect('/doctor');
         }
+        
         if (Auth::guard($guard)->check()) {
             return redirect(RouteServiceProvider::HOME);
         }
