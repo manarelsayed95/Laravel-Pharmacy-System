@@ -171,7 +171,7 @@
           <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">Admin</a>
         </div>
       </div>
 
@@ -190,39 +190,51 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pharmacies.index" class="nav-link active">
+                <a href="admin/pharmacies" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pharmacies</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('doctors.index')}}" class="nav-link">
+                <a href="admin/doctors" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Doctors</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="admin/Users" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
+                  <p>Users</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('areas.index')}}" class="nav-link">
+                <a href="admin/areas" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Areas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="admin/Addresses" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
+                  <p>User Addresses</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('medicines.index')}}" class="nav-link">
+                <a href="admin/medicines" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Medicines</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="admin/orders" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Orders</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="admin/revenue" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Revenue</p>
                 </a>
               </li>
             </ul>
