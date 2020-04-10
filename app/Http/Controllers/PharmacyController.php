@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\pharmacy;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\PermissionRegistrar;
 
 class PharmacyController extends Controller
 {
@@ -75,7 +78,7 @@ class PharmacyController extends Controller
             'area_id'=>$request->area_id,
         
         ]);
-
+        $doctor->assignRole('pharmacy');
         return redirect()->route('pharmacies.index');
 
     }

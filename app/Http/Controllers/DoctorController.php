@@ -80,7 +80,7 @@ class DoctorController extends Controller
             'image'=>$filename,
         ]);
 
-        // $role=Role::find(3);
+        
         $doctor->assignRole('doctor');
         return redirect()->route('doctors.index');
     }

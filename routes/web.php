@@ -193,10 +193,25 @@ Route::put('Addresses/{address}', 'UserAddressesController@update')->name('addre
 });
 Route::group(['middleware' => ['auth.doctor']], function () {
     // login protected routes.
+    Route::get('/doctor', function () {
+        return view('doctor');
+  });
+  Route::prefix('doctoruser')->group(function () {
     Route::get('/doctororders', 'DoctorUserController@index')->name('doctororders.index');
-Route::view('/doctor', 'doctor');
+    Route::get('/show', 'DoctorUserController@show')->name('doctororders.show');
+    Route::get('/orders','OrderMedicineController@index')->name('orders.index');
+    Route::get('/orders/create','OrderMedicineController@create')->name('orders.create');
+    
+    Route::post('/orders', 'OrderMedicineController@store')->name('orders.store');
+    
+    Route::get('/orders/{order}', 'OrderMedicineController@show')->name('orders.show');
+    
+    Route::get('/orders/{order}/edit', 'OrderMedicineController@edit')->name('orders.edit');
+    
+    Route::patch('/orders/{order}', 'OrderMedicineController@update')->name('orders.update');
+    
+    Route::delete('/orders/{order}', 'OrderMedicineController@destroy')->name('orders.destroy');
+// Route::view('/doctor', 'doctor');
+});
 });
 
-
-
-// Route::view('/doctor', 'doctor');

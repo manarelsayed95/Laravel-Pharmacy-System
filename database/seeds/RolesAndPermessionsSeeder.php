@@ -51,10 +51,10 @@ class RolesAndPermessionsSeeder extends Seeder
 
        
     //   //order permission
-    //   $po0=Permission::create(['name' => 'create order']);
-    //   $po1=Permission::create(['name' => 'show order']);
-    //   $po2=Permission::create(['name' => 'edit order']);
-    //   $po3=Permission::create(['name' => 'delete order']);
+      $po0=Permission::create(['name' => 'create order']);
+      $po1=Permission::create(['name' => 'show order']);
+      $po2=Permission::create(['name' => 'edit order']);
+      $po3=Permission::create(['name' => 'delete order']);
 
     //   //medicine permission
     //   $pm0=Permission::create(['name' => 'create medicine']);

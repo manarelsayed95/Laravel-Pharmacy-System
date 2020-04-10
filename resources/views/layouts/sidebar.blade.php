@@ -83,7 +83,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
             </ul>
           </li>
-
+          <li class="nav-item">
+            <a href="{{route('doctororders.show')}}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Profile</p>
+            </a>
+          </li>
+        </ul>
+      </li>
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 Logout <span class="caret"></span>
