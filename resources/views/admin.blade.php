@@ -244,7 +244,23 @@
           </li>
           
     @endrole
+    @role('doctor', 'doctor')
+          <li class="nav-item">
+            <a href="{{route('doctororders.index')}}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Orders</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Order Status</p>
+              </a>
+            </li>
+          </ul>
+        </li>
 
+    @endrole
 
              
           <li class="nav-item dropdown">

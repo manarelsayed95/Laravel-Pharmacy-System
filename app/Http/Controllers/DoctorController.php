@@ -81,7 +81,7 @@ class DoctorController extends Controller
         ]);
 
         // $role=Role::find(3);
-         $doctor->assignRole('doctor');
+        $doctor->assignRole('doctor');
         return redirect()->route('doctors.index');
     }
 

@@ -10,8 +10,14 @@ use App\OrderMedicine;
 use App\Http\Requests\StoreDoctorRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\App;
+
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Hash;
 use Auth;
+
+
 
 
 class DoctorUserController extends Controller

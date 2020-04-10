@@ -1,6 +1,7 @@
 @extends('admin_layouts.admin')
 @section('content')
 
+{{-- @dd(Auth::guard('doctor')->user()->hasrole('doctor')) --}}
 <div class="d-flex align-content-stretch flex-wrap" style="text-align:center">
     <div class="container " style="text-align:center">
         <br>

@@ -36,9 +36,9 @@ class Doctor extends Authenticatable  implements BannableContract
         }
 
 
-    public function order()
-    {
+    // public function order()
+    // {
 
-    }
+    // }
 }
 
