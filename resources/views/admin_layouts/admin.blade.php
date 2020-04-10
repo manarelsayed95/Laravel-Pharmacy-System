@@ -192,6 +192,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+@role('admin', 'admin')
               <li class="nav-item">
                 <a href="{{route('pharmacies.index')}}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
@@ -236,6 +237,7 @@
               </li>
             </ul>
           </li>
+@endrole
           
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
