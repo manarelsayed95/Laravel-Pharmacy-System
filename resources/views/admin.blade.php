@@ -253,10 +253,22 @@
     <!-- /.content -->
   
   <!-- /.content-wrapper -->
-    
+ 
 </div>
 <!-- ./wrapper -->
-
+<div class="container"  >
+  <div class="row justify-content-end">
+ 
+    <div class="card col-sm-4 " style="width: 18rem; ">
+      <div class="card-header">
+        Total Revenue
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"></li>
+      </ul>
+    </div>
+  </div>
+</div>
 <!-- jQuery -->
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->

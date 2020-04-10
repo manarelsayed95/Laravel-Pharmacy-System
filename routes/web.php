@@ -144,8 +144,8 @@ Route::get('/orders/{order}/edit', 'OrderMedicineController@edit')->name('orders
 
 Route::patch('/orders/{order}', 'OrderMedicineController@update')->name('orders.update');
 
-Route::delete('/orders/{order}', 'OrderMedicineController@destroy')->name('orders.destroy');
-
+Route::delete('/orders/{order}/delete', 'OrderMedicineController@destroy')->name('orders.destroy');
+Route::get('/Revenue','RevenueController@index')->name('Revenue.index');
 
 //doctors
 Route::get('/doctors', 'DoctorController@index')->name('doctors.index');

@@ -49,7 +49,7 @@
                 @endif
                 
                 
-                    <form method="POST" action="{{route('orders.destroy',[$order->id])}}">
+                    <form method="POST" action="{{route('orders.destroy',['order'=>$order->id])}}">
                     <td>
                     <a href="{{route('orders.show',['order' => $order->id])}}" class="btn btn-primary btn-sm">  <i class="fas fa-folder">
             </i> View</a></td>

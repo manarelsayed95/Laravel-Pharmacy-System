@@ -1,7 +1,7 @@
 @extends('admin_layouts.admin')
 @section('content')
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" >Adding a new medicine</a>
+  <a class="navbar-brand" >Adding a new Order</a>
 </nav>
 
 @if ($errors->any())
@@ -22,20 +22,20 @@
                 <div class="col-md-12">
                     <label for="medicine">medicine</label>
                     <a id="addRow" class=""><i class="fas fa-plus"></i></a>
-                    <input name="name" type="text" class="form-control" >
+                    <input name="name[]" type="text" class="form-control" >
                 </div>
             </div>
             <div class="form-group">
                 <label for="quantity">quantity</label>
-                <input name="quantity" type="number" class="form-control" >
+                <input name="quantity[]" type="number" class="form-control" >
             </div>
             <div class="form-group">
                 <label for="type">Type</label>
-                <input name="type" type="text" class="form-control" >
+                <input name="type[]" type="text" class="form-control" >
             </div>
             <div class="form-group">
                 <label for="price">price</label>
-                <input name="price"  type="number" class="form-control" id="price">
+                <input name="price[]"  type="number" class="form-control" id="price">
             </div>
         </div>
         <div id="newRow"></div>

@@ -232,6 +232,12 @@
                   <p>Orders</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('Revenue.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Revenue</p>
+                </a>
+              </li>
             </ul>
           </li>
           
