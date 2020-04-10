@@ -13,7 +13,7 @@
             <th scope="col">Delivering Address</th>
             <th scope="col">Creation Date</th>
             <th scope="col">Doctor Name</th>
-            <!-- <th scope="col">Status</th> -->
+            <th scope="col">Status</th>
             <th scope="col">Action</th>
             <th scope="col">Insured</th>
             <th scope="col">Assigned Pharmacy</th>
@@ -49,7 +49,7 @@
                 @endif
                 
                 
-                    <form method="POST" action="{{route('orders.destroy',[$order->id])}}">
+                    <form method="POST" action="{{route('orders.destroy',['order'=>$order->id])}}">
                     <td>
                     <a href="{{route('orders.show',['order' => $order->id])}}" class="btn btn-primary btn-sm">  <i class="fas fa-folder">
             </i> View</a></td>
