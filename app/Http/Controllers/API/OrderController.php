@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Order;
+use App\UserOrder;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+// use App\UserAddresses;
 use Auth;
 use App\Http\Resources\OrderResource;
+use App\Http\Resources\UserOrderResource;
 
 class OrderController extends Controller
 {
@@ -43,12 +48,35 @@ class OrderController extends Controller
             'delivering_address_id' => 'required',
         ]);
 
-        // dd($userData[0]->id);
-        $order= UserOrder::create([
-            'Is_insured' => $request->Is_insured,
-            'image' =>  $request->image,
-            'address_id' =>  $request->delivering_address_id,
+        if($request->hasFile('image'))
+        {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $filename =time().'.'.$extension;
+            Storage::disk('public')->put('orders/'.$filename, File::get($file));
+        } else {
+            $filename = 'laravel.jpg';
+        }
+
+        $order=Order::create([
+            'user_id'=>Auth::user()->id,
+            'is_insured' => $request->Is_insured,
         ]);
-        return new UserOrderResource($order);
+        
+        // dd($order->id);
+        // $images=$request->file('images');
+
+        //  dd($images);
+
+        // dd($userData[0]->id);
+        // foreach($images as $image){
+        $userorder = UserOrder::create([
+            'user_address_id'=> $request->delivering_address_id,
+            'order_id'=>$order->id,
+            'image' => $filename,
+        ]);
+        // }
+        return new UserOrderResource($userorder);
     }
 }
+

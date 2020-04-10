@@ -36,7 +36,7 @@ Route::put('/Addresses/{address}/update','API\UserAddressesController@update')->
 
 //Order Routes
 Route::get('/Orders','API\OrderController@index')->middleware('auth:sanctum');
-// Route::post('/Orders/store','API\OrderController@store')->middleware('auth:sanctum');
+Route::post('/Orders/store','API\OrderController@store')->middleware('auth:sanctum');
 Route::get('/Order/{order}','API\OrderController@show')->middleware('auth:sanctum');
 // Route::put('/Order/{order}','API\OrderController@update')->middleware('auth:sanctum');
 
