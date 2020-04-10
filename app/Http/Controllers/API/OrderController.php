@@ -70,13 +70,46 @@ class OrderController extends Controller
 
         // dd($userData[0]->id);
         // foreach($images as $image){
-        $userorder = UserOrder::create([
-            'user_address_id'=> $request->delivering_address_id,
-            'order_id'=>$order->id,
-            'image' => $filename,
-        ]);
+            $userorder = UserOrder::create([
+                'user_address_id'=> $request->delivering_address_id,
+                'order_id'=>$order->id,
+                'image' => $filename,
+            ]);
         // }
         return new UserOrderResource($userorder);
+    }
+
+    public function update(Request $request)
+    {
+        // $request->validate([
+        //     'Is_insured' => 'required',
+        //     // 'image' => 'required',
+        //     'delivering_address_id' => 'required',
+        // ]);
+    
+       
+        if($request->hasFile('image'))
+        {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $filename =time().'.'.$extension;
+            Storage::disk('public')->put('orders/'.$filename, File::get($file));
+        }
+        // dd( $request->delivering_address_id);
+        // $request=request();
+        $orderId=$request->order;
+        $order= UserOrder::find($orderId);
+        if($request->hasFile('image')){
+            $order->image = $filename;
+        }
+        else{
+            $order->image = null;
+        }
+        $order->user_address_id = $request->delivering_address_id;
+        $order->order_id = $order->order_id;
+
+        $order->save();
+        return new UserOrderResource($order);
     }
 }
 

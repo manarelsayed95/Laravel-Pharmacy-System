@@ -13,6 +13,8 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\UserNotification;
 
+use Notification;
+
 class UserController extends Controller
 {
     public function register(UserRequest $request){

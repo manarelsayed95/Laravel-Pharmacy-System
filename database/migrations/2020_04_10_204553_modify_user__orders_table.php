@@ -16,7 +16,7 @@ class ModifyUserOrdersTable extends Migration
         Schema::table('user_orders', function (Blueprint $table) {
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_address_id')->constrained()->onDelete('cascade');
-            $table->string('image');
+            $table->string('image')->nullable();
         });
     }
 

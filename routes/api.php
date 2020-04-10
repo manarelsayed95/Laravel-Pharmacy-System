@@ -38,7 +38,7 @@ Route::put('/Addresses/{address}/update','API\UserAddressesController@update')->
 Route::get('/Orders','API\OrderController@index')->middleware('auth:sanctum');
 Route::post('/Orders/store','API\OrderController@store')->middleware('auth:sanctum');
 Route::get('/Order/{order}','API\OrderController@show')->middleware('auth:sanctum');
-// Route::put('/Order/{order}','API\OrderController@update')->middleware('auth:sanctum');
+Route::put('/Order/{order}','API\OrderController@update')->middleware('auth:sanctum');
 
 
 Route::post('/sanctum/token', function (Request $request) {
