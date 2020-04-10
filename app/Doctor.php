@@ -28,5 +28,10 @@ class Doctor extends Authenticatable  implements BannableContract
         'password', 'remember_token',
     ];
 
-}
+    public function pharmacy()
+      {
+      
+         return $this->belongsTo('App\pharmacy', 'pharmacy_id');
+        }
+     }
 

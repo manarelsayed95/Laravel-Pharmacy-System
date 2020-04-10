@@ -99,22 +99,13 @@ Auth::routes();
     Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('admin.login');
    Route::post('/login/admin', 'Auth\LoginController@adminLogin');
 Auth::routes();
-Route::get('/login/doctor', 'Auth\LoginController@showDoctorLoginForm');
+Route::get('/login/doctor', 'Auth\LoginController@showDoctorLoginForm')->name('doctor.login');
 Route::post('/login/doctor', 'Auth\LoginController@doctorLogin');
-// Route::view('/home', 'home')->middleware('auth');
-
-Route::view('/doctor', 'doctor');
 
 
+Route::view('/home', 'home')->middleware('auth');
 
 
-// Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
-// Route::get('/doctors/create', 'DoctorController@create')->name('doctors.create');
-// Route::post('/doctors', 'DoctorController@store')->name('doctors.store');
-// Route::get('/doctors/{doctor}', 'DoctorController@show')->name('doctors.show');
-// Route::get('/doctors/{doctor}/edit', 'DoctorController@edit')->name('doctors.edit');
-// Route::put('/doctors/{doctor}', 'DoctorController@update')->name('doctors.update');
-// Route::delete('/doctors/{doctor}/delete', 'DoctorController@destroy')->name('doctors.destroy');
 
 
 Route::group(['middleware' => ['auth.admin']], function () {
@@ -199,6 +190,8 @@ Route::group(['middleware' => ['auth.admin']], function () {
     });
 });
 
-Route::view('/home', 'home')->middleware('auth');
-
-// Route::view('/doctor', 'doctor');
+Route::group(['middleware' => ['auth.doctor']], function () {
+    // login protected routes.
+    Route::get('/doctororders', 'DoctorUserController@index')->name('doctororders.index');
+    Route::view('/doctor', 'doctor');
+});
