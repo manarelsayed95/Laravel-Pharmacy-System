@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\DB;
+use App\Notifications\UserNotification;
 
 class UserController extends Controller
 {
@@ -35,6 +36,18 @@ class UserController extends Controller
                 'national_id' =>  $request->national_id,
                 'gender' =>  $request->gender,
             ]);
+
+        
+        $details = [
+            'greeting' => "Hi $request->name",
+            'body' => 'we will send you total price of your order as soon as possible',
+            'thanks' => 'Thank you for using our application',
+            'actionText' => 'View our site',
+            'actionURL' => url('http://http://127.0.0.1:8000/admin/Users'),
+            'order_id' => 101
+        ];
+  
+        Notification::send($user, new UserNotification($details));
 
         return new UserResource($user);
     }
