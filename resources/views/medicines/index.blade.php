@@ -26,7 +26,11 @@
               <td>{{ $medicine->name }} </td>
               <td>{{$medicine->quantity}}</td>
               <td>{{ $medicine->type}}</td>
-              <td>{{ $medicine->price}}</td> 
+             
+             <td>
+             <?php echo number_format(($medicine->price/100), 2, '.', ' ')?>
+             </td>
+            
             
               <td><a href="{{route('medicines.show',['medicine' => $medicine->id])}}" class="btn btn-primary btn-sm">  <i class="fas fa-folder">
             </i> View</a></td>
