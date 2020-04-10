@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
             <label for="total_price">total price</label>
-            <input name="total_price" value="{{$orderM->total_price}}" type="number" class="form-control">
+            <input name="total_price" value="{{$orderM->order->total_price}}" type="number" class="form-control">
         </div>
         <div class="form-group">
             <label for="delivering_address">delivering address</label>

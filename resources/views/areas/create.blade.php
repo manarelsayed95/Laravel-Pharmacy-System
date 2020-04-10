@@ -15,7 +15,7 @@
     </div>
 @endif
 <div>
-<form method="POST" action="/areas">
+<form method="POST" action="{{route('areas.store')}}">
  @csrf
   <div class="form-group">
     <label for="exampleInputEmail1">Name</label>

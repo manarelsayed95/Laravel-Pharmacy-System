@@ -122,7 +122,7 @@ public function update()
     $pharmacy->area_id=$request->get('area_id');
     $pharmacy->save();
      
-    return redirect('/pharmacies');
+    return redirect()->route('pharmacies.index');
 }
 
 

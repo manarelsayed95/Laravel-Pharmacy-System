@@ -15,7 +15,7 @@
     </div>
 @endif
 <div>
-<form method="POST" action="/medicines">
+<form method="POST" action="{{route('medicines.store')}}">
  @csrf
   <div class="form-group">
     <label for="exampleInputEmail1">Name</label>
