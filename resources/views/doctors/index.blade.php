@@ -1,4 +1,6 @@
 @extends('admin_layouts.admin')
+
+
 @section('content')
 
 <div class="d-flex align-content-stretch flex-wrap" style="text-align:center">
