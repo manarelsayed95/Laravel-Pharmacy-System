@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 
-
+// Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
 
 // Route::get('/orders','OrderMedicineController@index')->name('orders.index');
 // Route::get('/orders/create','OrderMedicineController@create')->name('orders.create');
@@ -97,10 +97,10 @@ Route::get('/', function () {
 // login as admin
 Auth::routes();
     Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('admin.login');
-   Route::post('/login/admin', 'Auth\LoginController@adminLogin');
+    Route::post('/login/admin', 'Auth\LoginController@adminLogin');
 Auth::routes();
-Route::get('/login/doctor', 'Auth\LoginController@showDoctorLoginForm')->name('doctor.login');
-Route::post('/login/doctor', 'Auth\LoginController@doctorLogin');
+    Route::get('/login/doctor', 'Auth\LoginController@showDoctorLoginForm')->name('doctor.login');
+    Route::post('/login/doctor', 'Auth\LoginController@doctorLogin');
 
 
 Route::view('/home', 'home')->middleware('auth');

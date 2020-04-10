@@ -34,5 +34,11 @@ class Doctor extends Authenticatable  implements BannableContract
       
          return $this->belongsTo('App\pharmacy', 'pharmacy_id');
         }
-     }
+
+
+    public function order()
+    {
+
+    }
+}
 

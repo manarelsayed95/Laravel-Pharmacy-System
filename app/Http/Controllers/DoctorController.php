@@ -9,6 +9,9 @@ use App\pharmacy;
 use App\Http\Requests\StoreDoctorRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\PermissionRegistrar;
 use Hash;
 use Auth;
 
@@ -19,7 +22,7 @@ class DoctorController extends Controller
 
         $doctors = Doctor::paginate(5);
         // $doctors = Doctor::all();
-
+    
         return view('doctors.index', [
             'doctors' => $doctors,
         ]);
@@ -67,7 +70,7 @@ class DoctorController extends Controller
 
     
 
-        Doctor::create(
+        $doctor= Doctor::create(
             [
             'name' => $request->name,
             'email' =>  $request->email,
@@ -76,7 +79,9 @@ class DoctorController extends Controller
             'pharmacy_id'=> $request->pharmacy_id,
             'image'=>$filename,
         ]);
-       
+
+        // $role=Role::find(3);
+         $doctor->assignRole('doctor');
         return redirect()->route('doctors.index');
     }
 
