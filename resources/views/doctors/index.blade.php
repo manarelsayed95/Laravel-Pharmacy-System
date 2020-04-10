@@ -33,7 +33,7 @@
               <td><img src="{{asset('uploads/doctors/'.$doctor->image)}}" width="90px" height="90px"></td>
               <td>{{ $doctor->national_id}}</td>
               <td>{{ $doctor->created_at->format('d-m-y')}}</td> 
-
+ 
               <td>{{ $doctor->ban_flag ? 'Banned': 'Not Banned'}}</td>
               {{-- <td>{{ $doctor->pharmacy->name}}</td> if has role admin --}}
          
