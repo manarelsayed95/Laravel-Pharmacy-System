@@ -163,7 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Cog\Laravel\Ban\Providers\BanServiceProvider::class,
 
-
+        Spatie\Permission\PermissionServiceProvider::class,
         /*
          * Package Service Providers...
          */

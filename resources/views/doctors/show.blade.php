@@ -93,7 +93,7 @@
 
             <strong><i class="fas fa-map-marker-alt mr-1"></i>Pharmacy</strong>
 
-            <p class="text-muted">Pharmacy name</p>
+            <p class="text-muted">{{ $doctor->pharmacy->name}}</p>
             <hr>
 
             <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>

@@ -1,7 +1,13 @@
 <?php
-
+use App\Admin;
+use App\User;
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class AdminUserSeeder extends Seeder
 {
@@ -16,6 +22,7 @@ class AdminUserSeeder extends Seeder
         'password' => bcrypt('123456'),
 
     ]);
-    
+    $admin= Admin::find(1);
+    $admin->assignRole('admin');
     }
 }

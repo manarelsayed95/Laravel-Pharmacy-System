@@ -6,11 +6,12 @@ use Illuminate\Notifications\Notifiable;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use Spatie\Permission\Traits\HasRoles;
 class Doctor extends Authenticatable  implements BannableContract
 {
     use Notifiable;
     use Bannable;
+    use HasRoles;
     protected $guard = 'doctor';
 
     protected $fillable = [
@@ -33,5 +34,11 @@ class Doctor extends Authenticatable  implements BannableContract
       
          return $this->belongsTo('App\pharmacy', 'pharmacy_id');
         }
-     }
+
+
+    public function order()
+    {
+
+    }
+}
 
