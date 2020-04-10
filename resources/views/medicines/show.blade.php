@@ -29,7 +29,8 @@
     <h5 class="card-text">Name:- {{ $medicine->name }}</h5>
     <h5 class="card-text">Quantity:- {{ $medicine->quantity }}</h5>
     <h5 class="card-text">Type:- {{ $medicine->type }}</h5>
-    <h5 class="card-text">Price:- {{ $medicine->price }}</h5>
+    <h5 class="card-text">Price: <?php echo number_format(($medicine->price/100), 2, '.', ' ')?>
+</h5>
   </div>
 </div>
 
