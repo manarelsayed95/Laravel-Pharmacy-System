@@ -27,7 +27,7 @@
             <tr>
                 <th scope="row">{{$order->id}}</th>
                 
-                <td>{{$order->order->user->name}}</td>
+                {{-- <td>{{$order->order->user->name}}</td> --}}
                 <td>{{$order->order->delivering_address}}</td>
                 <td>{{$order->created_At}}</td>
                 @if(is_null($order->order->doctor_id))
@@ -35,7 +35,7 @@
                 @else
                 <td>{{$order->order->doctor->name}}</td>
                 @endif
-             
+                <td>{{$order->order->status->status}}</td>
                 <td>{{$order->order->action}}</td>
                 @if($order->order->is_insured)
                 <td>Yes</td>
@@ -49,7 +49,7 @@
                 @endif
                 
                 
-                    <form method="POST" action="{{route('orders.destroy',['order'=>$order->id])}}">
+                    <form method="POST" action="{{route('orders.destroy',[$order->id])}}">
                     <td>
                     <a href="{{route('orders.show',['order' => $order->id])}}" class="btn btn-primary btn-sm">  <i class="fas fa-folder">
             </i> View</a></td>

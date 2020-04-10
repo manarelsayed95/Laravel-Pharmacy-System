@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 
-
+// Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
 
 // Route::get('/orders','OrderMedicineController@index')->name('orders.index');
 // Route::get('/orders/create','OrderMedicineController@create')->name('orders.create');
@@ -97,24 +97,15 @@ Route::get('/', function () {
 // login as admin
 Auth::routes();
     Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('admin.login');
-   Route::post('/login/admin', 'Auth\LoginController@adminLogin');
+    Route::post('/login/admin', 'Auth\LoginController@adminLogin');
 Auth::routes();
-Route::get('/login/doctor', 'Auth\LoginController@showDoctorLoginForm');
-Route::post('/login/doctor', 'Auth\LoginController@doctorLogin');
-// Route::view('/home', 'home')->middleware('auth');
-
-Route::view('/doctor', 'doctor');
+    Route::get('/login/doctor', 'Auth\LoginController@showDoctorLoginForm')->name('doctor.login');
+    Route::post('/login/doctor', 'Auth\LoginController@doctorLogin');
 
 
+Route::view('/home', 'home')->middleware('auth');
 
 
-// Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
-// Route::get('/doctors/create', 'DoctorController@create')->name('doctors.create');
-// Route::post('/doctors', 'DoctorController@store')->name('doctors.store');
-// Route::get('/doctors/{doctor}', 'DoctorController@show')->name('doctors.show');
-// Route::get('/doctors/{doctor}/edit', 'DoctorController@edit')->name('doctors.edit');
-// Route::put('/doctors/{doctor}', 'DoctorController@update')->name('doctors.update');
-// Route::delete('/doctors/{doctor}/delete', 'DoctorController@destroy')->name('doctors.destroy');
 
 
 Route::group(['middleware' => ['auth.admin']], function () {
@@ -132,7 +123,7 @@ Route::group(['middleware' => ['auth.admin']], function () {
             Route::put('/medicines/{medicine}','MedicineController@update')->name('medicines.update');
             Route::delete('/medicines/{medicine}/delete','MedicineController@destroy')->name('medicines.destroy');
     
-    //orders routes
+            //orders routes
             Route::get('/orders','OrderMedicineController@index')->name('orders.index');
 Route::get('/orders/create','OrderMedicineController@create')->name('orders.create');
 
@@ -199,6 +190,8 @@ Route::put('Addresses/{address}', 'UserAddressesController@update')->name('addre
         });
 });
 
-Route::view('/home', 'home')->middleware('auth');
-
-// Route::view('/doctor', 'doctor');
+Route::group(['middleware' => ['auth.doctor']], function () {
+    // login protected routes.
+    Route::get('/doctororders', 'DoctorUserController@index')->name('doctororders.index');
+    Route::view('/doctor', 'doctor');
+});

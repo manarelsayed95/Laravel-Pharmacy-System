@@ -52,7 +52,7 @@ class AreaController extends Controller
             'name'=> $request->name,
             'address'=> $request->address,
         ]);
-        return redirect('/areas');
+        return redirect()->route('areas.index');
     }
 
 
@@ -81,7 +81,7 @@ class AreaController extends Controller
        $area->name = $request->get('name');
         $area->address = $request->get('address');
         $area->save();
-    return redirect('/areas');
+        return redirect()->route('areas.index');
 }
 
 
@@ -90,7 +90,7 @@ class AreaController extends Controller
         $request=request();
         $areaId= $request->area;
         Area::find($areaId)->delete();
-        return redirect('/areas');
+        return redirect()->route('areas.index');
     }
    
 }

@@ -42,8 +42,11 @@ class UserAddressesController extends Controller
         $username=$request->user_name;
         $areaname=$request->area_name;
         // dd($username);
-        $userData= DB::table('users')->where('name',$username)->get();
-        $areaData= DB::table('areas')->where('name',$areaname)->get();
+        // $userData= DB::table('users')->where('name',$username)->get();
+        // $areaData= DB::table('areas')->where('name',$areaname)->get();
+           $userData= Area::where('name',$username)->get();
+           $areaData= Area::where('name',$areaname)->get();
+
         // dd($userData[0]->id);
         $address= UserAddresses::create([
             'street_name' => $request->street_name,
@@ -73,8 +76,10 @@ class UserAddressesController extends Controller
         $username=$request->user_name;
         $areaname=$request->area_name;
         // dd($username);
-        $userData= DB::table('users')->where('name',$username)->get();
-        $areaData= DB::table('areas')->where('name',$areaname)->get();
+        // $userData= DB::table('users')->where('name',$username)->get();
+        // $areaData= DB::table('areas')->where('name',$areaname)->get();
+        $userData= Area::where('name',$username)->get();
+        $areaData= Area::where('name',$areaname)->get();
         // dd($userData[0]->id);
        
         // $request=request();

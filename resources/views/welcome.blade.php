@@ -73,7 +73,7 @@
 
                 <div class="links">
                     <a href="/login/admin">Login as an admin</a>
-                    <a href="https://laracasts.com">Laracasts</a>
+                    <a href="/login/doctor">Login as a doctor</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://blog.laravel.com">Blog</a>
                     <a href="https://nova.laravel.com">Nova</a>
