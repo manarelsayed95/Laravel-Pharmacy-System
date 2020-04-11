@@ -15,7 +15,7 @@ class ModifyStatusOrdersDefaultTable extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             
-            // $table->string('status_id')->default(1);
+            $table->string('status_id')->default(1);
         });
     }
 
