@@ -5,7 +5,7 @@
 <div class="d-flex align-content-stretch flex-wrap" style="text-align:center">
     <div class="container " style="text-align:center">
         <br>
-        {{-- <a href="{{route('orders.create')}}" class="btn btn-success mb-5" style="align-center">Create Order</a> --}}
+        <a href="{{route('doctororders.create')}}" class="btn btn-success mb-5" style="align-center">Create Order</a>
     <table class="table table-bordered table-hover table-dark" class="mx-auto" style="background-color: 	rgb(52, 57, 64)">
         <thead class="thead-light">
             <tr>
@@ -48,21 +48,27 @@
 
                 
                 
-                    <form method="POST" action="{{route('orders.destroy',[$order->id])}}">
+                    {{-- <form method="POST" action="{{route('orders.destroy',[$order->id])}}"> --}}
                     <td>
-                    <a href="{{route('orders.show',['order' => $order->id])}}" class="btn btn-primary btn-sm">  <i class="fas fa-folder">
-            </i> View</a></td>
-            <td>
-                        <a href="{{route('orders.edit',['order'=>$order->id])}}" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt">
-            </i> Edit</a></a></td>
-                        @csrf
-                        @method('DELETE')
-                        <td>
-                        <button class="btn btn-danger" type="submit" on_click="confirm('are you sure you want to delete this order?')"  role="button" aria-pressed="true">Delete</button>
-                        </td>
-                    </form>
-                    
-            </tr>
+                            <a href="{{route('doctororders.show',['order' => $order->id])}}" class="btn btn-primary btn-sm">  <i class="fas fa-folder">
+                    </i> View</a></td>
+                    <td>
+                                <a href="{{route('doctororders.edit',['order'=>$order->id])}}" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt">
+                    </i> Edit</a></a></td>
+                            
+                            {{-- </form> --}}
+
+
+                            <td> 
+                                <form method="POST" action="{{route('doctororders.destroy',['order' => $order->id])}}" >
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this order?')"><i class="fas fa-trash-alt">
+                                    </i> Delete</button>
+                                </form>
+                            </td>
+                            
+                    </tr>
             @endforeach
 
         </tbody>

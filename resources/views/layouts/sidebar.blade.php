@@ -84,7 +84,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{route('doctororders.show')}}" class="nav-link">
+            <a href="{{route('doctororders.profile')}}" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Profile</p>
             </a>
