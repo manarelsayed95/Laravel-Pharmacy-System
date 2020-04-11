@@ -123,7 +123,7 @@ Route::group(['middleware' => ['auth.admin']], function () {
             Route::put('/medicines/{medicine}','MedicineController@update')->name('medicines.update');
             Route::delete('/medicines/{medicine}/delete','MedicineController@destroy')->name('medicines.destroy');
     
-    //orders routes
+            //orders routes
             Route::get('/orders','OrderMedicineController@index')->name('orders.index');
 Route::get('/orders/create','OrderMedicineController@create')->name('orders.create');
 
@@ -135,8 +135,8 @@ Route::get('/orders/{order}/edit', 'OrderMedicineController@edit')->name('orders
 
 Route::patch('/orders/{order}', 'OrderMedicineController@update')->name('orders.update');
 
-Route::delete('/orders/{order}', 'OrderMedicineController@destroy')->name('orders.destroy');
-
+Route::delete('/orders/{order}/delete', 'OrderMedicineController@destroy')->name('orders.destroy');
+Route::get('/Revenue','RevenueController@index')->name('Revenue.index');
 
 //doctors
 Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
@@ -148,8 +148,6 @@ Route::put('/doctors/{doctor}', 'DoctorController@update')->name('doctors.update
 Route::delete('/doctors/{doctor}/delete', 'DoctorController@destroy')->name('doctors.destroy');
 Route::get('/doctors/{doctor}/ban', 'DoctorController@ban')->name('doctors.ban');
 Route::get('/doctors/{doctor}/unban', 'DoctorController@unban')->name('doctors.unban');
-
-//doctor user
 
 
 //pharmacies routes
@@ -192,7 +190,7 @@ Route::put('Addresses/{address}', 'UserAddressesController@update')->name('addre
         });
 });
 
-################################# DOCTOR USER ROUTES #############################################
+// ################################# DOCTOR USER ROUTES #############################################
 // Auth::routes();
 Route::group(['middleware' => ['auth.doctor']], function () {
     // login protected routes.
@@ -218,3 +216,5 @@ Route::group(['middleware' => ['auth.doctor']], function () {
 });
 });
 
+//     Route::view('/doctor', 'doctor');
+// });

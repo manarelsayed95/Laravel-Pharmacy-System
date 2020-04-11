@@ -11,10 +11,20 @@ use App\Doctor;
 use App\Status;
 use App\pharmacy;
 use App\Medicine;
+use Illuminate\Support\Facades\Auth;
+
 class OrderMedicineController extends Controller
 {
     public function index(){
         $orders = OrderMedicine::all();
+        // if (Auth::check()) {
+            // The user is logged in...
+        // }
+        // $user = Auth::user();
+        // print($user->id);
+        // print($user->name);
+        // $id = Auth::user()->id;
+        
         return view('orders.index',[
             'orders'=> $orders,
         ]);
@@ -26,6 +36,7 @@ class OrderMedicineController extends Controller
         $total_price =0;
         $meds =Medicine::all();
         $users = User::all();
+      
         return view('orders.create',[
             // 'orders' => $orders,
             'orderM'=>$orderM,
@@ -34,87 +45,65 @@ class OrderMedicineController extends Controller
             // 'doctors'=>$doctors,
             'users'=> $users
         ]);
+       
     }
     public function store(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'delivering_address' =>  'required|regex:/^(?:\d+ [a-zA-Z ]+, ){2}[a-zA-Z ]+$/',//15 Gordon St, 3121 Cremorne, Australia
+            'total_price' => 'required',
+            'type'=> 'required|min:3',
+            'action'=> 'required|min:3',
+            'quantity'=>'required',
+            'type'=> 'required',
+            'price'=> 'required',
+        ]);
         $order_id = DB::table('orders')->max('id')+1;
-        $medicine = $request->medicine_name;
+        $medicine = $request->name;
         $med_id =DB::table('medicines')->where('name',$medicine)->value('id');
+       
+        $user_id = $request->user_id;
+
+        $area_id = DB::table('user_addresses')->where('user_id',$user_id)->value('area_id');
+        $pharmacy = DB::table('pharmacies')->where('area_id',$area_id)->orderBy('priority','asc')->first();
+        $pharmacy_id=$pharmacy->id;
+        
         if(is_null($med_id)){
             $med_id_new = DB::table('medicines')->max('id')+1;
             
-            // $request->validate([
-            //     'name' => 'required|unique:medicines|max:255',
-            //     'price' => 'required',
-            //     'type' => 'required',
-            //     'quantity' => 'required',
-            // ]);
-            // foreach($request->input(['quantity']) as $key => $value) {
-                // $rules["name.{$key}"] = 'required';
-                // $quantity="quantity.{$key}";
-            //     $quantity=$request->input('quantity.'.$key);
-            //     dd($quantity);
-            //     OrderMedicine::create([
-            //         'quantity'=>$request->quantity,
-                    
-            //         'medicine_id' => $med_id,
-            //         'order_id' =>$order_id
-            //     ]);
-            // }  
-            
-            // $arr = [
-            //     $request->input(['name']),
-            //     $request->input(['quantity']),
-            //     $request->input(['type']),
-            //     $request->input(['price']),
-            // ];
-            
-            // for ($i=0; $i < 4; $i++) { 
-            //     $med = [
-            //         $request->input('name.'.$i),
-            //         $request->input('quantity.'.$i),
-            //         $request->input('type.'.$i),
-            //         $request->input('price.'.$i),
-            //     ];
-            // }
-            // dd($request->input(['name']));
-            // foreach ($request->input() as $key => $value) {
-
-            // $data = array(
-            //     'goodsreceiveheader_id'=>$id,
-            //     'itemid'=>$request->itemid [$key],
-            //     'quantity'=>$request->quantity [$key],
-            //     'costprice'=>$request->costprice [$key],
-            // );
-            // Medicine::create([
-                //     'name'=> $med[0],
-                //     'quantity'=> $med[1],
-                //     'type'=> $med[2],
-                //     'price'=> $med[3],
-                // ]);
-
-            // }
-            // foreach($request->input(['type']) as $key => $value) {
-            //     Medicine::create([
-            //         'type'=> $value,
-            //     ]);
+            foreach($request->input(['name']) as $key => $value) {
                 
-            // }
-            Medicine::create([
-                'name'=> $request->name,
-                'quantity'=> $request->quantity,
-                'type'=> $request->type,
-                'price'=> $request->price,
-            ]);
+                $med = [
+                    $request->input('name.'.$key),
+                    $request->input('quantity.'.$key),
+                    $request->input('type.'.$key),
+                    $request->input('price.'.$key),
+                ];
+                Medicine::create([
+                    'name'=> $med[0],
+                    'quantity'=> $med[1],
+                    'type'=>$med[2],
+                    'price'=>$med[3],
+                ]);
+                
+            }
+           
             Order::create([
                 'delivering_address'=>$request->delivering_address,
                 'is_insured' => $request->is_insured,
                 'action' => $request->action, 
                 'total_price'=>$request->total_price,
                 'user_id'=>$request->user_id,
+                'pharmacy_id'=>$pharmacy_id
                 // 'doctor_id'=>$request->doctor_id,
             ]);
+            $quan=0;
+            foreach($request->input(['quantity']) as $key => $value) {
+                $quan = $quan + $request->input('quantity.'.$key);
+                
+            } 
             OrderMedicine::create([
-                'quantity'=>$request->quantity,
+                'quantity'=>$quan,
                 'medicine_id' => $med_id_new,
                 'order_id' =>$order_id
             ]);
@@ -143,6 +132,16 @@ class OrderMedicineController extends Controller
     }
     public function edit(){
         $request= request();
+        $request->validate([
+            'name'=>'required',
+            'delivering_address' =>  'required|regex:/^(?:\d+ [a-zA-Z ]+, ){2}[a-zA-Z ]+$/',//15 Gordon St, 3121 Cremorne, Australia
+            'total_price' => 'required',
+            'type'=> 'required|min:3',
+            'action'=> 'required|min:3',
+            'quantity'=>'required',
+            'type'=> 'required',
+            'price'=> 'required',
+        ]);
         $stId =DB::table('statuses')->where('status','WaitingForUserConfirmation')->value('id');
         
         $orderId=$request->order;
@@ -194,8 +193,11 @@ class OrderMedicineController extends Controller
             ]);
         return redirect()->route('orders.index');
     }
-    public function destroy($id){
-        $order = Order::find($id);
+    public function destroy(){
+        $request=request();
+        $orderId = $request->order;
+        $order = Order::where('id',$orderId);
+        $order_med = OrderMedicine::where('order_id', $orderId);
         $order -> delete();
         return redirect()->route('orders.index');
     }

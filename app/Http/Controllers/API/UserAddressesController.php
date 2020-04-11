@@ -9,13 +9,13 @@ use App\User;
 use App\Area;
 use App\UserAddresses;
 
-use App\Http\Resources\UserAdressesResource;
+use App\Http\Resources\UserAddressesResource;
 
 class UserAddressesController extends Controller
 {
      
     public function index(){
-        return UserAdressesResource::collection(
+        return UserAddressesResource::collection(
             UserAddresses::all()
             // UserAddresses::paginate(4)
         ); 
@@ -23,7 +23,7 @@ class UserAddressesController extends Controller
 
     public function show($address){
         return  UserAddresses::find($address)
-            ?new UserAdressesResource(
+            ?new UserAddressesResource(
                 UserAddresses::find($address)
             ) : 'not exist';
     }
@@ -42,8 +42,11 @@ class UserAddressesController extends Controller
         $username=$request->user_name;
         $areaname=$request->area_name;
         // dd($username);
-        $userData= DB::table('users')->where('name',$username)->get();
-        $areaData= DB::table('areas')->where('name',$areaname)->get();
+        // $userData= DB::table('users')->where('name',$username)->get();
+        // $areaData= DB::table('areas')->where('name',$areaname)->get();
+           $userData= Area::where('name',$username)->get();
+           $areaData= Area::where('name',$areaname)->get();
+
         // dd($userData[0]->id);
         $address= UserAddresses::create([
             'street_name' => $request->street_name,
@@ -56,7 +59,7 @@ class UserAddressesController extends Controller
             'area_id' =>   $areaData[0]->id,
             'user_id' =>   $userData[0]->id,
         ]);
-        return new UserAdressesResource($address);
+        return new UserAddressesResource($address);
     }
 
     public function update(Request $request)
@@ -73,8 +76,10 @@ class UserAddressesController extends Controller
         $username=$request->user_name;
         $areaname=$request->area_name;
         // dd($username);
-        $userData= DB::table('users')->where('name',$username)->get();
-        $areaData= DB::table('areas')->where('name',$areaname)->get();
+        // $userData= DB::table('users')->where('name',$username)->get();
+        // $areaData= DB::table('areas')->where('name',$areaname)->get();
+        $userData= Area::where('name',$username)->get();
+        $areaData= Area::where('name',$areaname)->get();
         // dd($userData[0]->id);
        
         // $request=request();
@@ -89,7 +94,7 @@ class UserAddressesController extends Controller
         $address->user_id = $userData[0]->id;
 
         $address->save();
-        return new UserAdressesResource($address);
+        return new UserAddressesResource($address);
     }
         
 }

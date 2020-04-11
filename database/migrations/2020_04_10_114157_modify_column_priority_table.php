@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ModifyStatusOrdersDefTable extends Migration
+class ModifyColumnPriorityTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class ModifyStatusOrdersDefTable extends Migration
      */
     public function up()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn('status_id');
+        Schema::table('pharmacies', function (Blueprint $table) {
+            $table->integer('priority')->nullable;
         });
     }
 
@@ -25,7 +25,7 @@ class ModifyStatusOrdersDefTable extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
+        Schema::table('pharmacies', function (Blueprint $table) {
             //
         });
     }

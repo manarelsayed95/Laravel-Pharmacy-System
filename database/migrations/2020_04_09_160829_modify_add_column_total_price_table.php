@@ -14,7 +14,7 @@ class ModifyAddColumnTotalPriceTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->decimal('total_Price', 8, 2);;
+            $table->decimal('total_Price', 8, 2)->nullable();
         });
     }
 

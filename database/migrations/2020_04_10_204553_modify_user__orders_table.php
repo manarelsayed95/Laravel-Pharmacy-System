@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ModifyStatusOrdersDefTable extends Migration
+class ModifyUserOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class ModifyStatusOrdersDefTable extends Migration
      */
     public function up()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn('status_id');
+        Schema::table('user_orders', function (Blueprint $table) {
+            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_address_id')->constrained()->onDelete('cascade');
+            $table->string('image')->nullable();
         });
     }
 
@@ -25,7 +27,7 @@ class ModifyStatusOrdersDefTable extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
+        Schema::table('user_orders', function (Blueprint $table) {
             //
         });
     }
