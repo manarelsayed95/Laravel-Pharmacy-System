@@ -67,7 +67,7 @@ class PharmacyController extends Controller
         }
 
 
-        pharmacy::create([
+        $doctor=pharmacy::create([
           
 
             'created_at'=>$request->created_at,
