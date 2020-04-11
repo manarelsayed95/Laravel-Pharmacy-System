@@ -14,7 +14,7 @@ class ModifyColumnPriorityTable extends Migration
     public function up()
     {
         Schema::table('pharmacies', function (Blueprint $table) {
-            $table->integer('priority')->nullable;
+            $table->integer('priority')->nullable();
         });
     }
 

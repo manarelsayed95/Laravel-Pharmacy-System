@@ -80,7 +80,7 @@ class PharmacyController extends Controller
             'area_id'=>$request->area_id,
         
         ]);
-        $doctor->assignRole('pharmacy');
+        //$doctor->assignRole('pharmacy');
         return redirect()->route('pharmacies.index');
 
     }

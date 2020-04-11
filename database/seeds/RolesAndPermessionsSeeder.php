@@ -66,7 +66,7 @@ class RolesAndPermessionsSeeder extends Seeder
     //   $pr0=Permission::create(['name' => 'show revenue']);
 
       //assigning roles to permissions
-       $role2->syncPermissions([$pd0,$pd1,$pd2,$pd3,$pd4,$pp2,$pp3,$po0,$po1,$po2,$po3,$pm0,$pm1,$pm2,$pm3,$pr0]);
-       $role3->syncPermissions([$po0,$po1,$po2,$po3]);
+      // $role2->syncPermissions([$pd0,$pd1,$pd2,$pd3,$pd4,$pp2,$pp3,$po0,$po1,$po2,$po3,$pm0,$pm1,$pm2,$pm3,$pr0]);
+      // $role3->syncPermissions([$po0,$po1,$po2,$po3]);
     }
 }

@@ -2,7 +2,7 @@
 
 
 @section('content')
-
+{{-- @dd(Auth::guard('admin')->user()->hasrole('admin')) --}}
 <div class="d-flex align-content-stretch flex-wrap" style="text-align:center">
     <div class="container " style="text-align:center">
         <br>
@@ -18,7 +18,9 @@
               <th scope="col">National ID</th>
               <th scope="col">Added On</th>
               <th scope="col">Ban Status</th>
-              {{-- <th scope="col">Pharmacy Name</th> if admin only --}}
+              @role('admin', 'admin')
+                 <th scope="col">Pharmacy Name</th>
+              @endrole
               <th scope="col"></th>
               <th scope="col">Actions</th>
               <th scope="col"></th>
@@ -34,10 +36,12 @@
               <td>{{$doctor->email}}</td>
               <td><img src="{{asset('uploads/doctors/'.$doctor->image)}}" width="90px" height="90px"></td>
               <td>{{ $doctor->national_id}}</td>
-              <td>{{ $doctor->created_at->format('d-m-y')}}</td> 
- 
+              {{-- <td>{{ $doctor->created_at->format('d-m-y')}}</td>  --}}
+
               <td>{{ $doctor->ban_flag ? 'Banned': 'Not Banned'}}</td>
-              <td>{{ $doctor->pharmacy->name}}</td> if has role admin
+              @role('admin', 'admin')
+                 <td>{{ $doctor->pharmacy->name}}</td> 
+              @endrole
          
               <td><a href="{{route('doctors.show',['doctor' => $doctor->id])}}" class="btn btn-primary btn-sm" >  <i class="fas fa-folder">
             </i> View</a></td>
