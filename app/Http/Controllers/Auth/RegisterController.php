@@ -9,6 +9,12 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use App\Admin;
+use App\Pharmacy;
+
+use Illuminate\Http\Request;
+use Phar;
+
 class RegisterController extends Controller
 {
     /*
@@ -39,6 +45,8 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:admin');
+        $this->middleware('guest:pharmacy');
     }
 
     /**
@@ -56,6 +64,14 @@ class RegisterController extends Controller
         ]);
     }
 
+    public function showAdminRegisterForm()
+    {
+        return view('auth.register', ['url' => 'admin']);
+    }
+    public function showPharmacyRegisterForm()
+    {
+        return view('auth.register', ['url' => 'pharmacy']);
+    }
     /**
      * Create a new user instance after a valid registration.
      *
@@ -69,5 +85,27 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+    protected function createAdmin(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $admin = Admin::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/admin');
+    }
+
+
+    protected function createPharmacy(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $admin = Pharmacy::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/pharmacy');
     }
 }

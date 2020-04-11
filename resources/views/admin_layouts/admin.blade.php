@@ -192,6 +192,8 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+
+@role('admin', 'admin')
               <li class="nav-item">
                 <a href="{{route('pharmacies.index')}}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
@@ -242,6 +244,34 @@
               </li>
             </ul>
           </li>
+@endrole
+
+@role('doctor','doctor')
+
+          <li class="nav-item">
+            <a href="{{route('doctororders.index')}}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Orders</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Order Status</p>
+              </a>
+            </li>
+          </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('doctororders.profile')}}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Profile</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+@endrole
+
           
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

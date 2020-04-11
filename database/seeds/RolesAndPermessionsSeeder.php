@@ -51,10 +51,10 @@ class RolesAndPermessionsSeeder extends Seeder
 
        
     //   //order permission
-    //   $po0=Permission::create(['name' => 'create order']);
-    //   $po1=Permission::create(['name' => 'show order']);
-    //   $po2=Permission::create(['name' => 'edit order']);
-    //   $po3=Permission::create(['name' => 'delete order']);
+      $po0=Permission::create(['name' => 'create order']);
+      $po1=Permission::create(['name' => 'show order']);
+      $po2=Permission::create(['name' => 'edit order']);
+      $po3=Permission::create(['name' => 'delete order']);
 
     //   //medicine permission
     //   $pm0=Permission::create(['name' => 'create medicine']);
@@ -65,8 +65,8 @@ class RolesAndPermessionsSeeder extends Seeder
     //   //revenue permission
     //   $pr0=Permission::create(['name' => 'show revenue']);
 
-    //   //assigning roles to permissions
-    //    $role2->syncPermissions([$pd0,$pd1,$pd2,$pd3,$pd4,$pp2,$pp3,$po0,$po1,$po2,$po3,$pm0,$pm1,$pm2,$pm3,$pr0]);
-    //    $role3->syncPermissions([$po0,$po1,$po2,$po3]);
+      //assigning roles to permissions
+       $role2->syncPermissions([$pd0,$pd1,$pd2,$pd3,$pd4,$pp2,$pp3,$po0,$po1,$po2,$po3,$pm0,$pm1,$pm2,$pm3,$pr0]);
+       $role3->syncPermissions([$po0,$po1,$po2,$po3]);
     }
 }

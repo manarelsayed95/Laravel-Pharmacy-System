@@ -15,7 +15,11 @@ class ModifyOrderMedicinesOnDCTable extends Migration
     {
         Schema::table('order_medicines', function (Blueprint $table) {
             $table->dropForeign('order_medicines_order_id_foreign'); 
+<<<<<<< HEAD
+            $table->dropForeign('order_medicines_medicine_id_foreign'); 
+=======
             $table->dropForeign('order_medicines_medicine_id_foreign');
+>>>>>>> f047f4ded67089e94ae180af7322fe71305cb18c
             $table->dropColumn('order_id');
             $table->dropColumn('medicine_id');
         });

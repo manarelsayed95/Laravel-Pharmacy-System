@@ -74,12 +74,8 @@
                 <div class="links">
                     <a href="/login/admin">Login as an admin</a>
                     <a href="/login/doctor">Login as a doctor</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="/login/pharmacy">Login as a pharmacy owner</a>
+                
                 </div>
             </div>
         </div>

@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\pharmacy;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+// use Hash
+use Illuminate\Support\Facades\Hash; 
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\PermissionRegistrar;
 
 class PharmacyController extends Controller
 {
@@ -68,14 +73,14 @@ class PharmacyController extends Controller
             'created_at'=>$request->created_at,
             'name'=>$request->name,
              'email'=>$request->email,
-            'password'=>$request->password,
+             'password' => Hash::make($request->password),
             'national_id'=>$request->national_id,
             'revenue'=>$request->revenue,
             'image'=>$filename,
             'area_id'=>$request->area_id,
         
         ]);
-
+        $doctor->assignRole('pharmacy');
         return redirect()->route('pharmacies.index');
 
     }

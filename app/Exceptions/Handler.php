@@ -71,6 +71,9 @@ class Handler extends ExceptionHandler
             if ($request->is('doctor') || $request->is('doctor/*')) {
                 return redirect()->guest('/login/doctor');
             }
+            if ($request->is('pharmacy') || $request->is('pharmacy/*')) {
+                return redirect()->guest('/login/pharmacy');
+            }
             return redirect()->guest(route('login'));
         }
 }

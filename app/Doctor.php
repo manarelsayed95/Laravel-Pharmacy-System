@@ -6,7 +6,11 @@ use Illuminate\Notifications\Notifiable;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
+
+
 use Spatie\Permission\Traits\HasRoles;
+
 class Doctor extends Authenticatable  implements BannableContract
 {
     use Notifiable;
@@ -36,9 +40,9 @@ class Doctor extends Authenticatable  implements BannableContract
         }
 
 
-    public function order()
-    {
+    // public function order()
+    // {
 
-    }
+    // }
 }
 

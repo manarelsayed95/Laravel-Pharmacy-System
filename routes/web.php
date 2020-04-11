@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth; 
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/pharmacydoctors', 'pharmacyDoctorController@index')->name('pharmacydoctors.index');
+// // Route::get('/pharmacydoctors', function() {
+// //     return "Hello there";
+// // });
 
 // Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
 
@@ -96,11 +102,22 @@ Route::get('/', function () {
 
 // login as admin
 Auth::routes();
+
+   Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('admin.login');
+   Route::post('/login/admin', 'Auth\LoginController@adminLogin');
+
+
     Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('admin.login');
     Route::post('/login/admin', 'Auth\LoginController@adminLogin');
+
 Auth::routes();
     Route::get('/login/doctor', 'Auth\LoginController@showDoctorLoginForm')->name('doctor.login');
     Route::post('/login/doctor', 'Auth\LoginController@doctorLogin');
+
+
+Auth::routes();
+Route::get('/login/pharmacy', 'Auth\LoginController@showPharmacyLoginForm')->name('pharmacy.login');
+Route::post('/login/pharmacy', 'Auth\LoginController@pharmacyLogin');
 
 
 Route::view('/home', 'home')->middleware('auth');
@@ -138,7 +155,6 @@ Route::patch('/orders/{order}', 'OrderMedicineController@update')->name('orders.
 Route::delete('/orders/{order}/delete', 'OrderMedicineController@destroy')->name('orders.destroy');
 Route::get('/Revenue','RevenueController@index')->name('Revenue.index');
 
-//doctors
 Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
 Route::get('/doctors/create', 'DoctorController@create')->name('doctors.create');
 Route::post('/doctors', 'DoctorController@store')->name('doctors.store');
@@ -155,7 +171,7 @@ Route::get('/pharmacies', 'PharmacyController@index')->name('pharmacies.index');
 Route::get('/pharmacies/create','PharmacyController@create')->name('pharmacies.create');
 Route::get('/pharmacies/{pharmacy}', 'PharmacyController@show')->name('pharmacies.show');
 Route::post('/pharmacies','PharmacyController@store')->name('pharmacies.store');
-Route::delete('/pharmaciess/{pharmacy}','PharmacyController@destroy')->name('pharmacies.destroy');
+Route::delete('/pharmacies/{pharmacy}','PharmacyController@destroy')->name('pharmacies.destroy');
 Route::get('/pharmacies/{pharmacy}/edit','PharmacyController@edit')->name('pharmacies.edit');
 Route::put('/pharmacies/{pharmacy}','PharmacyController@update')->name('pharmacies.update');
 
@@ -187,11 +203,92 @@ Route::DELETE('Addresses/{address}/delete', 'UserAddressesController@destroy')->
 Route::get('Addresses/{address}/edit', 'UserAddressesController@edit')->name('addresses.edit');
 Route::put('Addresses/{address}', 'UserAddressesController@update')->name('addresses.update');
 
+
+// Route::get('datatable', ['uses'=>'PharmacyDoctorController@index']);
+// // Route::get('datatable', ['doctors'=>'PharmacyDoctorController@index']);
+
+// Route::get('datatable/getposts', ['as'=>'datatable.getposts','uses'=>'PharmacyDoctorController@getPosts']);
+
+
+
+
+
+
+
+
         });
 });
 
+
+// ################################# DOCTOR USER ROUTES #############################################
+// Auth::routes();
+
 Route::group(['middleware' => ['auth.doctor']], function () {
     // login protected routes.
+    Route::get('/doctor', function () {
+        return view('doctor');
+  });
+    Route::prefix('doctoruser')->group(function () {
     Route::get('/doctororders', 'DoctorUserController@index')->name('doctororders.index');
-    Route::view('/doctor', 'doctor');
+
+Route::view('/doctor', 'doctor');
+
 });
+
+    Route::get('/profile', 'DoctorUserController@profile')->name('doctororders.profile');
+
+
+    Route::get('/orders/create','DoctorUserController@create')->name('doctororders.create');
+    
+    Route::post('/orders', 'DoctorUserController@store')->name('doctororders.store');
+    
+    Route::get('/orders/{order}', 'DoctorUserController@show')->name('doctororders.show');
+    
+    Route::get('/orders/{order}/edit', 'DoctorUserController@edit')->name('doctororders.edit');
+    
+    Route::patch('/orders/{order}', 'DoctorUserController@update')->name('doctororders.update');
+    
+    Route::delete('/orders/{order}', 'DoctorUserController@destroy')->name('doctororders.destroy');
+
+
+Route::group(['middleware' => ['auth.pharmacy']], function () {
+    // login protected routes.
+    Route::get('/pharmacy', function () {
+        return view('pharmacy');
+  });
+//Route::get('/pharmacydoctors', 'PharmacyDoctorController@indexx')->name('pharmacydoctors.indexx');
+//Route::view('/pharmacy', 'pharmacy');
+Route::get('/pharmacydoctors', 'pharmacyDoctorController@index')->name('pharmacydoctors.index');
+Route::get('/pharmacydoctors/create','pharmacyDoctorController@create')->name('pharmacydoctors.create');
+
+
+
+
+
+Route::get('/pharmacydoctorss', 'pharmacyDoctorController@indexx')->name('pharmacydoctors.indexx');
+Route::get('/pharmacydoctors/{doctor}', 'pharmacyDoctorController@show')->name('pharmacydoctors.show');
+Route::post('/pharmacydoctors','pharmacyDoctorController@store')->name('pharmacydoctors.store');
+Route::delete('/pharmacydoctors/{doctor','pharmacyDoctorController@destroy')->name('pharmacydoctors.destroy');
+Route::get('/pharmacydoctors/{doctor}/edit','pharmacyDoctorController@edit')->name('pharmacydoctors.edit');
+Route::put('/pharmacydoctors/{doctor}','pharmacyDoctorController@update')->name('pharmacydoctors.update');
+
+});
+
+
+// Route::view('/doctor', 'doctor');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+});
+
+
+//     Route::view('/doctor', 'doctor');
+// });
+

@@ -55,6 +55,11 @@ return [
             'driver' => 'session',
             'provider' => 'doctors',
         ],
+
+        'pharmacy' => [
+            'driver' => 'session',
+            'provider' => 'pharmacies',
+        ],
     ],
 
     /*
@@ -88,6 +93,12 @@ return [
             'driver' => 'eloquent',
             'model' => App\Doctor::class,
         ],
+
+        'pharmacies' => [
+            'driver' => 'eloquent',
+            'model' => App\pharmacy::class,
+        ],
+
 
 
         // 'users' => [

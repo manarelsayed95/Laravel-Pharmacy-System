@@ -9,11 +9,19 @@ use App\pharmacy;
 use App\Http\Requests\StoreDoctorRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+<<<<<<< HEAD
+use Illuminate\Support\Facades\Hash; 
+use Illuminate\Support\Facades\Auth; 
+// use App\Authenticatable;
+// use Hash;
+// use Auth;
+=======
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\PermissionRegistrar;
 use Hash;
 use Auth;
+>>>>>>> 6cd68807697448d1a8b259ed6efad2884267eecf
 
 class DoctorController extends Controller
 {
@@ -80,8 +88,8 @@ class DoctorController extends Controller
             'image'=>$filename,
         ]);
 
-        // $role=Role::find(3);
-         $doctor->assignRole('doctor');
+        
+        $doctor->assignRole('doctor');
         return redirect()->route('doctors.index');
     }
 

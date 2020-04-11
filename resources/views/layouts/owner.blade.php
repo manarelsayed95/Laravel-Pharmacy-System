@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>Doctor | Starter</title>
+  <title>Pharmacy Owner | Starter</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -70,27 +70,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-              <a href="{{route('doctororders.index')}}" class="nav-link active">
+              <a href="{{route('pharmacydoctors.index')}}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Orders</p>
+                  <p>Doctors</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Order Status</p>
+                  <p>Order</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="{{route('doctororders.profile')}}" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Profile</p>
-            </a>
-          </li>
-        </ul>
-      </li>
+
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 Logout <span class="caret"></span>
@@ -121,7 +114,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Doctor Page</h1>
+            <h1 class="m-0 text-dark">Pharmacy Owner Page</h1>
           </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->

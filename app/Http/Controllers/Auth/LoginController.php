@@ -1,16 +1,16 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+// use Auth;
+use Illuminate\Support\Facades\Auth; 
 
-use Auth;
 use App\Doctor;
-
+use App\pharmacy;
+use App\Authenticatable;
 class LoginController extends Controller
 {
     /*
@@ -23,16 +23,13 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
     use AuthenticatesUsers;
-
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-
     /**
      * Create a new controller instance.
      *
@@ -42,9 +39,9 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('guest:doctor')->except('logout');
+        $this->middleware('guest:pharmacy')->except('logout');
         // $this->middleware('guest:web')->except('logout');
     }
-
     public function showAdminLoginForm()
     {
         return view('auth.login', ['url' => 'admin']);
@@ -53,31 +50,39 @@ class LoginController extends Controller
     {
         return view('auth.login', ['url' => 'doctor']);
     }
-
+    public function showPharmacyLoginForm()
+    {
+        return view('auth.login', ['url' => 'pharmacy']);
+    }
     public function doctorLogin(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
         if (Auth::guard('doctor')->attempt($credentials)) {
-
             return redirect()->intended('/doctor');
-            
         }
         else{dd('error');}
         return back()->withInput($request->only('email', 'remember'));
     }
+
+    public function pharmacyLogin(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+        if (Auth::guard('pharmacy')->attempt($credentials)) {
+            return redirect()->intended('/pharmacy');
+        }
+        else{dd('error');}
+        return back()->withInput($request->only('email', 'remember'));
+    }
+
     public function adminLogin(Request $request)
     {
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
-
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-
            // return Redirect::action('LoginController@index');
            // return redirect()->action('Auth\LoginController@index');
-
         return redirect()->intended('/admin');
         }
         return back()->withInput($request->only('email', 'remember'));

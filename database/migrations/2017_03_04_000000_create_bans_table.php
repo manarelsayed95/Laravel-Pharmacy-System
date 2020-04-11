@@ -32,7 +32,6 @@ class CreateBansTable extends Migration
             $table->timestamp('expired_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
-
             $table->index('expired_at');
         });
     }
